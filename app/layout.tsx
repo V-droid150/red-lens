@@ -17,9 +17,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "VinSite — Web Developer & UI/UX Designer",
+  title: "Red Lens — Web Developer & UI/UX Designer",
   description:
-    "Web developer dan UI/UX designer yang membantu UMKM Indonesia tampil profesional di internet.",
+    "Red Lens — web developer dan UI/UX designer yang membantu UMKM Indonesia tampil profesional di internet.",
 };
 
 export default function RootLayout({

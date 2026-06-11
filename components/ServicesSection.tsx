@@ -21,17 +21,11 @@ export default function ServicesSection() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-[11px] font-medium uppercase tracking-widest text-accent">
-            ✦ Apa yang saya tawarkan
+            ✦ Our offer
           </p>
           <h2 className="mt-4 font-heading text-4xl font-extrabold text-white md:text-5xl">
-            Layanan yang Bisa
-            <br />
-            Saya Bantu
+            Our Service
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-zinc-400">
-            Setiap proyek dikerjakan dengan standar kode yang bersih, desain yang intuitif, dan
-            komunikasi yang transparan.
-          </p>
         </div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-3">

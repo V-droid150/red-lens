@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { skills, stats } from "@/lib/data";
+import Logo from "@/components/Logo";
 
 export default function AboutSection() {
   return (
@@ -21,7 +22,7 @@ export default function AboutSection() {
               className="absolute inset-2 flex items-center justify-center rounded-full border-2 border-accent/30"
               style={{ background: "linear-gradient(135deg, #1a0000, #3b0000)" }}
             >
-              <span className="font-heading text-6xl font-extrabold text-accent">VS</span>
+              <Logo className="w-28" />
             </div>
           </div>
 
@@ -44,9 +45,9 @@ export default function AboutSection() {
             ✦ Tentang saya
           </p>
           <h2 className="mt-4 font-heading text-4xl font-extrabold text-white md:text-5xl">
-            Developer yang
+            Kami Siap
             <br />
-            Mengerti Bisnis
+            Membantu UMKM
           </h2>
 
           <div className="mt-6 space-y-4 text-zinc-400">

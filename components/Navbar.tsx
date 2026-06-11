@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import Logo from "@/components/Logo";
 
 const NAV = [
   { label: "Layanan", id: "layanan" },
@@ -37,12 +38,11 @@ export default function Navbar() {
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center"
-          aria-label="VinSite"
+          className="flex items-center gap-2"
+          aria-label="Red Lens"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-md border border-accent/40 font-heading text-xl font-bold text-accent">
-            VS
-          </span>
+          <Logo className="h-6 w-12" />
+          <span className="font-heading text-lg font-bold text-white">Red Lens</span>
         </button>
 
         <div className="hidden items-center gap-8 md:flex">

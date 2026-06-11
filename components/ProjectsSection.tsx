@@ -10,12 +10,10 @@ export default function ProjectsSection() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="max-w-2xl">
           <p className="text-[11px] font-medium uppercase tracking-widest text-accent">
-            ✦ Karya terbaru
+            ✦ Portofolio
           </p>
           <h2 className="mt-4 font-heading text-4xl font-extrabold text-white md:text-5xl">
-            Project yang Pernah
-            <br />
-            Saya Bangun
+            Our Projects
           </h2>
         </div>
 

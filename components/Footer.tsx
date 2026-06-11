@@ -1,4 +1,5 @@
 import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/BrandIcons";
+import Logo from "@/components/Logo";
 
 const NAV = [
   { label: "Layanan", href: "#layanan" },
@@ -19,9 +20,10 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="grid gap-8 md:grid-cols-3">
           <div>
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-accent/40 font-heading text-xl font-bold text-accent">
-              VS
-            </span>
+            <div className="flex items-center gap-2">
+              <Logo className="h-6 w-12" />
+              <span className="font-heading text-lg font-bold text-white">Red Lens</span>
+            </div>
             <p className="mt-3 max-w-xs text-sm text-zinc-500">
               Membangun website yang mengembangkan bisnis Anda.
             </p>
@@ -56,7 +58,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 flex flex-col gap-2 border-t border-zinc-900 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-zinc-600">© 2026 VinSite. All rights reserved.</p>
+          <p className="text-xs text-zinc-600">© 2026 Red Lens. All rights reserved.</p>
           <p className="text-xs text-zinc-600">Built with Next.js & Tailwind</p>
         </div>
       </div>
