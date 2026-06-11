@@ -23,14 +23,14 @@ export default function HeroSection() {
 
       {/* Carousel 3D sebagai background di tengah */}
       <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
-        <div className="w-full max-w-4xl opacity-50">
+        <div className="w-full max-w-4xl opacity-100">
           <Carousel3D showDots={false} />
         </div>
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 45%, rgba(8,8,8,0.55) 0%, rgba(8,8,8,0.82) 60%, #080808 100%)",
+              "radial-gradient(ellipse at 50% 45%, rgba(8,8,8,0.25) 0%, rgba(8,8,8,0.5) 70%, rgba(8,8,8,0.85) 100%)",
           }}
         />
       </div>
