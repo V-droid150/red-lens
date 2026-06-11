@@ -18,81 +18,89 @@ function go(id: string) {
 
 export default function HeroSection() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden px-5 pt-24 sm:px-8 lg:pt-0">
-      <GlowOrb x="60%" y="-10%" size={700} opacity={0.07} />
-      <GlowOrb x="-5%" y="65%" size={300} opacity={0.04} />
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-5 py-32 text-center sm:px-8">
+      <GlowOrb x="50%" y="-15%" size={700} opacity={0.06} />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-2">
-        {/* Kolom kiri: teks */}
-        <div>
-          <motion.div {...fade(0)}>
-            <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-widest text-zinc-300">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-              </span>
-              Tersedia untuk proyek freelance
-            </span>
-          </motion.div>
-
-          <motion.h1
-            {...fade(0.1)}
-            className="mt-6 font-heading text-5xl font-extrabold leading-[1.05] md:text-6xl lg:text-7xl"
-          >
-            <span className="text-white">Your Website </span>
-            <span className="relative inline-block text-accent">
-              solutions
-              <svg
-                className="absolute -bottom-2 left-0 w-full"
-                viewBox="0 0 300 12"
-                fill="none"
-                preserveAspectRatio="none"
-                aria-hidden
-              >
-                <path
-                  d="M2 8C40 2 70 2 110 6s70 4 110 0 60-4 78-2"
-                  stroke="#dc2626"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
-          </motion.h1>
-
-          <motion.p {...fade(0.2)} className="mt-6 max-w-lg text-lg text-zinc-400">
-            Web developer & UI/UX designer yang membantu UMKM Indonesia tampil profesional melalui
-            landing page dan web app yang estetik dan fungsional.
-          </motion.p>
-
-          <motion.div {...fade(0.3)} className="mt-8 flex flex-wrap gap-4">
-            <button
-              onClick={() => go("karya")}
-              className="rounded-full bg-accent px-8 py-3 text-sm font-medium text-white transition hover:brightness-110"
-            >
-              Lihat Karya →
-            </button>
-            <button
-              onClick={() => go("contact")}
-              className="rounded-full border border-accent px-8 py-3 text-sm font-medium text-accent transition hover:bg-accent hover:text-white"
-            >
-              Diskusi Proyek
-            </button>
-          </motion.div>
-
-          <motion.div {...fade(0.4)} className="mt-8 flex flex-wrap gap-2">
-            {TECH.map((t) => (
-              <span
-                key={t}
-                className="rounded-full border border-zinc-800 bg-surface px-3 py-1 text-xs text-zinc-500"
-              >
-                {t}
-              </span>
-            ))}
-          </motion.div>
+      {/* Carousel 3D sebagai background di tengah */}
+      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
+        <div className="w-full max-w-4xl opacity-50">
+          <Carousel3D showDots={false} />
         </div>
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 45%, rgba(8,8,8,0.55) 0%, rgba(8,8,8,0.82) 60%, #080808 100%)",
+          }}
+        />
+      </div>
 
-        {/* Kolom kanan: Carousel 3D */}
-        <Carousel3D />
+      {/* Teks di tengah */}
+      <div className="relative z-10 mx-auto max-w-3xl">
+        <motion.div {...fade(0)}>
+          <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-widest text-zinc-300">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+            </span>
+            Tersedia untuk proyek freelance
+          </span>
+        </motion.div>
+
+        <motion.h1
+          {...fade(0.1)}
+          className="mt-6 font-heading text-5xl font-extrabold leading-[1.05] md:text-7xl"
+        >
+          <span className="text-white">Your Website </span>
+          <span className="relative inline-block text-accent">
+            solutions
+            <svg
+              className="absolute -bottom-2 left-0 w-full"
+              viewBox="0 0 300 12"
+              fill="none"
+              preserveAspectRatio="none"
+              aria-hidden
+            >
+              <path
+                d="M2 8C40 2 70 2 110 6s70 4 110 0 60-4 78-2"
+                stroke="#dc2626"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
+            </svg>
+          </span>
+        </motion.h1>
+
+        <motion.p {...fade(0.2)} className="mx-auto mt-6 max-w-xl text-lg text-zinc-400">
+          Web developer & UI/UX designer yang membantu UMKM Indonesia tampil profesional melalui
+          landing page dan web app yang estetik dan fungsional.
+        </motion.p>
+
+        <motion.div {...fade(0.3)} className="mt-8 flex flex-wrap justify-center gap-4">
+          <button
+            onClick={() => go("karya")}
+            className="rounded-full bg-accent px-8 py-3 text-sm font-medium text-white transition hover:brightness-110"
+          >
+            Lihat Karya →
+          </button>
+          <button
+            onClick={() => go("contact")}
+            className="rounded-full border border-accent px-8 py-3 text-sm font-medium text-accent transition hover:bg-accent hover:text-white"
+          >
+            Diskusi Proyek
+          </button>
+        </motion.div>
+
+        <motion.div {...fade(0.4)} className="mt-8 flex flex-wrap justify-center gap-2">
+          {TECH.map((t) => (
+            <span
+              key={t}
+              className="rounded-full border border-zinc-800 bg-surface px-3 py-1 text-xs text-zinc-500"
+            >
+              {t}
+            </span>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

@@ -55,7 +55,7 @@ const cards = [
 const TOTAL = cards.length;
 const ANGLE_PER = 360 / TOTAL;
 
-export default function Carousel3D() {
+export default function Carousel3D({ showDots = true }: { showDots?: boolean }) {
   const [rotation, setRotation] = useState(0);
   const [mobile, setMobile] = useState(false);
   const pausedRef = useRef(false);
@@ -209,17 +209,19 @@ export default function Carousel3D() {
       </div>
 
       {/* Dot indikator */}
-      <div className="mt-2 flex gap-2">
-        {cards.map((card, i) => (
-          <button
-            key={card.id}
-            onClick={() => goToCard(i)}
-            aria-label={`Ke card ${i + 1}`}
-            className="h-1.5 w-1.5 rounded-full transition-colors"
-            style={{ background: i === activeIndex ? "#dc2626" : "#3f3f46" }}
-          />
-        ))}
-      </div>
+      {showDots && (
+        <div className="mt-2 flex gap-2">
+          {cards.map((card, i) => (
+            <button
+              key={card.id}
+              onClick={() => goToCard(i)}
+              aria-label={`Ke card ${i + 1}`}
+              className="h-1.5 w-1.5 rounded-full transition-colors"
+              style={{ background: i === activeIndex ? "#dc2626" : "#3f3f46" }}
+            />
+          ))}
+        </div>
+      )}
     </motion.div>
   );
 }
