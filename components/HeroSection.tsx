@@ -1,0 +1,108 @@
+"use client";
+
+import { motion } from "framer-motion";
+import GlowOrb from "./GlowOrb";
+import DeviceMockup from "./DeviceMockup";
+
+const TECH = ["Next.js", "React", "TypeScript", "Tailwind", "Figma"];
+
+const fade = (delay: number) => ({
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: "easeOut" as const, delay },
+});
+
+function go(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+}
+
+export default function HeroSection() {
+  return (
+    <section className="relative flex min-h-screen items-center overflow-hidden px-5 pt-24 sm:px-8 lg:pt-0">
+      <GlowOrb x="60%" y="-10%" size={700} opacity={0.07} />
+      <GlowOrb x="-5%" y="65%" size={300} opacity={0.04} />
+
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-2">
+        {/* Kolom kiri */}
+        <div>
+          <motion.div {...fade(0)}>
+            <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-widest text-zinc-300">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+              </span>
+              Tersedia untuk proyek freelance
+            </span>
+          </motion.div>
+
+          <motion.h1
+            {...fade(0.1)}
+            className="mt-6 font-heading text-5xl font-extrabold leading-[1.05] md:text-6xl lg:text-7xl"
+          >
+            <span className="block text-white">Saya Membangun</span>
+            <span className="block text-white">Website yang</span>
+            <span className="relative block w-fit text-accent">
+              Mengembangkan
+              <svg
+                className="absolute -bottom-2 left-0 w-full"
+                viewBox="0 0 300 12"
+                fill="none"
+                preserveAspectRatio="none"
+                aria-hidden
+              >
+                <path
+                  d="M2 8C40 2 70 2 110 6s70 4 110 0 60-4 78-2"
+                  stroke="#dc2626"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+            <span className="block text-white">Bisnis Anda.</span>
+          </motion.h1>
+
+          <motion.p {...fade(0.2)} className="mt-6 max-w-lg text-lg text-zinc-400">
+            Web developer & UI/UX designer yang membantu UMKM Indonesia tampil profesional melalui
+            landing page dan web app yang estetik dan fungsional.
+          </motion.p>
+
+          <motion.div {...fade(0.3)} className="mt-8 flex flex-wrap gap-4">
+            <button
+              onClick={() => go("karya")}
+              className="rounded-full bg-accent px-8 py-3 text-sm font-medium text-white transition hover:brightness-110"
+            >
+              Lihat Karya →
+            </button>
+            <button
+              onClick={() => go("contact")}
+              className="rounded-full border border-accent px-8 py-3 text-sm font-medium text-accent transition hover:bg-accent hover:text-white"
+            >
+              Diskusi Proyek
+            </button>
+          </motion.div>
+
+          <motion.div {...fade(0.4)} className="mt-8 flex flex-wrap gap-2">
+            {TECH.map((t) => (
+              <span
+                key={t}
+                className="rounded-full border border-zinc-800 bg-surface px-3 py-1 text-xs text-zinc-500"
+              >
+                {t}
+              </span>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Kolom kanan */}
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
+          className="flex justify-center lg:justify-end"
+        >
+          <DeviceMockup />
+        </motion.div>
+      </div>
+    </section>
+  );
+}
