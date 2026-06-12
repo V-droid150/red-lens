@@ -56,11 +56,13 @@ const TOTAL = cards.length;
 const ANGLE_PER = 360 / TOTAL;
 
 export default function Carousel3D({ showDots = true }: { showDots?: boolean }) {
-  const [rotation, setRotation] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [mobile, setMobile] = useState(false);
   const pausedRef = useRef(false);
   const speedRef = useRef(0.3);
   const rafRef = useRef<number>();
+  const rotationRef = useRef(0);
+  const sceneRef = useRef<HTMLDivElement>(null);
 
   // Konfigurasi responsif
   const cfg = mobile
@@ -76,21 +78,32 @@ export default function Carousel3D({ showDots = true }: { showDots?: boolean }) 
     return () => mq.removeEventListener("change", update);
   }, []);
 
-  // Auto-rotate (berhenti saat hover)
+  // Auto-rotate (berhenti saat hover) — gerakkan via ref agar TIDAK re-render tiap frame
   useEffect(() => {
     const animate = () => {
-      if (!pausedRef.current) setRotation((prev) => prev - speedRef.current);
+      if (!pausedRef.current) {
+        rotationRef.current -= speedRef.current;
+        if (sceneRef.current) {
+          sceneRef.current.style.transform = `translate(-50%, -50%) rotateY(${rotationRef.current}deg)`;
+        }
+        // Re-render hanya saat card terdepan berganti (setState bail-out kalau sama)
+        const norm = ((-rotationRef.current % 360) + 360) % 360;
+        const idx = Math.round(norm / ANGLE_PER) % TOTAL;
+        setActiveIndex((prev) => (prev === idx ? prev : idx));
+      }
       rafRef.current = requestAnimationFrame(animate);
     };
     rafRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(rafRef.current!);
   }, []);
 
-  // Index card terdepan (untuk efek aktif & dot)
-  const norm = ((-rotation % 360) + 360) % 360;
-  const activeIndex = Math.round(norm / ANGLE_PER) % TOTAL;
-
-  const goToCard = (index: number) => setRotation(-(index * ANGLE_PER));
+  const goToCard = (index: number) => {
+    rotationRef.current = -(index * ANGLE_PER);
+    if (sceneRef.current) {
+      sceneRef.current.style.transform = `translate(-50%, -50%) rotateY(${rotationRef.current}deg)`;
+    }
+    setActiveIndex(index);
+  };
 
   return (
     <motion.div
@@ -123,6 +136,7 @@ export default function Carousel3D({ showDots = true }: { showDots?: boolean }) 
 
         {/* Scene */}
         <div
+          ref={sceneRef}
           className="absolute"
           style={{
             top: "50%",
@@ -130,7 +144,7 @@ export default function Carousel3D({ showDots = true }: { showDots?: boolean }) 
             width: cfg.w,
             height: cfg.h,
             transformStyle: "preserve-3d",
-            transform: `translate(-50%, -50%) rotateY(${rotation}deg)`,
+            transform: `translate(-50%, -50%) rotateY(${rotationRef.current}deg)`,
           }}
         >
           {cards.map((card, i) => {

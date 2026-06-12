@@ -32,19 +32,3 @@ body {
   background: #dc2626;
   color: #ffffff;
 }
-
-/* Scanline hologram — drift seamless (periode = jarak geser = 6px) */
-@keyframes holo-scan {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 0 6px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .holo-scanlines {
-    animation: none !important;
-  }
-}
