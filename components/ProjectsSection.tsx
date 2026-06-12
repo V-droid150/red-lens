@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { projects } from "@/lib/data";
+import HoloBackground from "@/components/HoloBackground";
 
 export default function ProjectsSection() {
   return (
     <section id="karya" className="relative py-32">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <HoloBackground flip />
+      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <div className="max-w-2xl">
           <p className="text-[11px] font-medium uppercase tracking-widest text-accent">
             ✦ Portofolio

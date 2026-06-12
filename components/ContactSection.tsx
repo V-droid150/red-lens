@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Mail, Loader2, CheckCircle2 } from "lucide-react";
 import { WhatsappIcon, GithubIcon } from "@/components/BrandIcons";
+import HoloBackground from "@/components/HoloBackground";
 
 type FormValues = {
   name: string;
@@ -30,19 +31,49 @@ export default function ContactSection() {
   } = useForm<FormValues>();
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  async function onSubmit() {
+  async function onSubmit(data: FormValues) {
     setLoading(true);
-    // Simulasi pengiriman (form belum benar-benar mengirim email).
-    await new Promise((r) => setTimeout(r, 1500));
-    setLoading(false);
-    setSent(true);
-    reset();
+    setError(null);
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      setError("Form belum dikonfigurasi. Silakan hubungi via email.");
+      setLoading(false);
+      return;
+    }
+    try {
+      // Web3Forms (plan gratis) hanya menerima request dari sisi client/browser.
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `Red Lens — Proyek baru dari ${data.name} (${data.service})`,
+          from_name: "Red Lens Website",
+          name: data.name,
+          email: data.email,
+          service: data.service,
+          message: data.message,
+        }),
+      });
+      const json = (await res.json()) as { success?: boolean; message?: string };
+      if (!json.success) {
+        throw new Error(json.message || "Gagal mengirim pesan. Coba lagi.");
+      }
+      setSent(true);
+      reset();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Terjadi kesalahan. Coba lagi.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
     <section id="contact" className="relative py-32" style={{ background: "#0a0a0a" }}>
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <HoloBackground flip />
+      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <div className="max-w-2xl">
           <p className="text-[11px] font-medium uppercase tracking-widest text-accent">
             ✦ Mulai proyek
@@ -139,6 +170,12 @@ export default function ContactSection() {
                   />
                   {errors.message && <p className="mt-1 text-xs text-accent">Pesan wajib diisi.</p>}
                 </div>
+
+                {error && (
+                  <p className="rounded-lg border border-accent/40 bg-accent/10 px-4 py-2.5 text-sm text-accent">
+                    {error}
+                  </p>
+                )}
 
                 <button
                   type="submit"

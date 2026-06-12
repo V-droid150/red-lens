@@ -1,5 +1,6 @@
 import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/BrandIcons";
 import Logo from "@/components/Logo";
+import HoloBackground from "@/components/HoloBackground";
 
 const NAV = [
   { label: "Layanan", href: "#layanan" },
@@ -16,8 +17,9 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-accent/10 bg-background py-12">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+    <footer className="relative overflow-hidden border-t border-accent/10 bg-background py-12">
+      <HoloBackground />
+      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <div className="grid gap-8 md:grid-cols-3">
           <div>
             <div className="flex items-center gap-2">

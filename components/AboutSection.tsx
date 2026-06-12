@@ -3,11 +3,13 @@
 import { motion } from "framer-motion";
 import { skills, stats } from "@/lib/data";
 import Logo from "@/components/Logo";
+import HoloBackground from "@/components/HoloBackground";
 
 export default function AboutSection() {
   return (
     <section id="tentang" className="relative py-32" style={{ background: "#0a0a0a" }}>
-      <div className="mx-auto grid max-w-6xl items-center gap-16 px-5 sm:px-8 lg:grid-cols-2">
+      <HoloBackground />
+      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-16 px-5 sm:px-8 lg:grid-cols-2">
         {/* Kolom kiri: avatar + stats */}
         <div>
           <div className="relative mx-auto h-[200px] w-[200px]">

@@ -113,10 +113,10 @@ export default function Carousel3D({ showDots = true }: { showDots?: boolean }) 
             bottom: "10%",
             left: "50%",
             transform: "translateX(-50%)",
-            width: "300px",
-            height: "40px",
-            background: "radial-gradient(ellipse, rgba(220,38,38,0.2) 0%, transparent 70%)",
-            filter: "blur(20px)",
+            width: "340px",
+            height: "48px",
+            background: "radial-gradient(ellipse, rgba(220,38,38,0.32) 0%, transparent 70%)",
+            filter: "blur(22px)",
             pointerEvents: "none",
           }}
         />
@@ -147,9 +147,9 @@ export default function Carousel3D({ showDots = true }: { showDots?: boolean }) 
                   background: card.color,
                   border: `1px solid ${card.accent}4d`,
                   boxShadow: isActive
-                    ? `0 25px 70px rgba(0,0,0,0.6), 0 0 40px ${card.accent}40`
+                    ? `0 25px 70px rgba(0,0,0,0.6), 0 0 55px ${card.accent}66`
                     : "0 20px 60px rgba(0,0,0,0.5)",
-                  filter: isActive ? "brightness(1)" : "brightness(0.6)",
+                  filter: isActive ? "brightness(1.18)" : "brightness(0.85)",
                   transition: "filter 0.3s ease, box-shadow 0.3s ease",
                 }}
               >

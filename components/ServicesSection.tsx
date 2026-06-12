@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { LayoutTemplate, Code2, Check } from "lucide-react";
 import { FigmaIcon } from "@/components/BrandIcons";
 import { services } from "@/lib/data";
+import HoloBackground from "@/components/HoloBackground";
 
 const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   layout: LayoutTemplate,
@@ -18,7 +19,8 @@ function go(id: string) {
 export default function ServicesSection() {
   return (
     <section id="layanan" className="relative py-32" style={{ background: "#0a0a0a" }}>
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <HoloBackground />
+      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-[11px] font-medium uppercase tracking-widest text-accent">
             ✦ Our offer

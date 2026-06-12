@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import GlowOrb from "./GlowOrb";
 import Carousel3D from "./Carousel3D";
+import HoloBackground from "./HoloBackground";
 
 const TECH = ["Next.js", "React", "TypeScript", "Tailwind", "Figma"];
 
@@ -19,6 +20,7 @@ function go(id: string) {
 export default function HeroSection() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-5 py-32 text-center sm:px-8">
+      <HoloBackground />
       <GlowOrb x="50%" y="-15%" size={700} opacity={0.06} />
 
       {/* Carousel 3D sebagai background di tengah */}
@@ -30,7 +32,7 @@ export default function HeroSection() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 45%, rgba(8,8,8,0.25) 0%, rgba(8,8,8,0.5) 70%, rgba(8,8,8,0.85) 100%)",
+              "radial-gradient(ellipse at 50% 45%, rgba(8,8,8,0) 0%, rgba(8,8,8,0.22) 70%, rgba(8,8,8,0.55) 100%)",
           }}
         />
       </div>
