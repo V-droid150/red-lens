@@ -1,4 +1,4 @@
-import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/BrandIcons";
+import { InstagramIcon, TiktokIcon, WhatsappIcon } from "@/components/BrandIcons";
 import Logo from "@/components/Logo";
 import HoloBackground from "@/components/HoloBackground";
 
@@ -10,9 +10,9 @@ const NAV = [
 ];
 
 const SOCIALS = [
-  { Icon: GithubIcon, href: "https://github.com/V-droid150" },
-  { Icon: LinkedinIcon, href: "#" },
-  { Icon: InstagramIcon, href: "#" },
+  { Icon: InstagramIcon, href: "https://www.instagram.com/kevinkie_/", label: "Instagram" },
+  { Icon: TiktokIcon, href: "#", label: "TikTok" },
+  { Icon: WhatsappIcon, href: "https://wa.me/6282113515619", label: "WhatsApp" },
 ];
 
 export default function Footer() {
@@ -27,7 +27,7 @@ export default function Footer() {
               <span className="font-heading text-lg font-bold text-white">Red Lens</span>
             </div>
             <p className="mt-3 max-w-xs text-sm text-zinc-500">
-              Membangun website yang mengembangkan bisnis Anda.
+              Your website started here.
             </p>
           </div>
 
@@ -44,14 +44,14 @@ export default function Footer() {
           </div>
 
           <div className="flex gap-4 md:justify-end">
-            {SOCIALS.map(({ Icon, href }, i) => (
+            {SOCIALS.map(({ Icon, href, label }) => (
               <a
-                key={i}
+                key={label}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-500 transition hover:text-accent"
-                aria-label="Sosial media"
+                aria-label={label}
               >
                 <Icon className="h-5 w-5" />
               </a>
@@ -59,9 +59,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-2 border-t border-zinc-900 pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-8 border-t border-zinc-900 pt-6 text-center">
           <p className="text-xs text-zinc-600">© 2026 Red Lens. All rights reserved.</p>
-          <p className="text-xs text-zinc-600">Built with Next.js & Tailwind</p>
         </div>
       </div>
     </footer>

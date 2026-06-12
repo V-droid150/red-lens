@@ -44,7 +44,7 @@ export default function AboutSection() {
         {/* Kolom kanan: bio + skills */}
         <div>
           <p className="text-[11px] font-medium uppercase tracking-widest text-accent">
-            ✦ Tentang saya
+            ✦ Tentang kami
           </p>
           <h2 className="mt-4 font-heading text-4xl font-extrabold text-white md:text-5xl">
             Kami Siap
@@ -54,12 +54,12 @@ export default function AboutSection() {
 
           <div className="mt-6 space-y-4 text-zinc-400">
             <p>
-              Saya Kevin, web developer dan UI/UX designer yang fokus membantu UMKM Indonesia
-              berkembang secara digital. Saya percaya website yang bagus bukan hanya soal estetika —
+              Kami tim web developer dan UI/UX designer yang fokus membantu UMKM Indonesia
+              berkembang secara digital. Kami percaya website yang bagus bukan hanya soal estetika —
               tapi soal bagaimana ia bekerja untuk bisnis Anda.
             </p>
             <p>
-              Dengan pendekatan design-first, saya memastikan setiap proyek tidak hanya indah di
+              Dengan pendekatan design-first, kami memastikan setiap proyek tidak hanya indah di
               mata, tapi juga intuitif bagi pengguna dan menghasilkan konversi nyata bagi pemilik
               bisnis.
             </p>

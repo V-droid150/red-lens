@@ -61,7 +61,7 @@ export default function Navbar() {
           onClick={() => go("contact")}
           className="hidden rounded-full border border-accent px-5 py-2 text-sm font-medium text-accent transition hover:bg-accent hover:text-white md:block"
         >
-          Hubungi Saya
+          Hubungi Kami
         </button>
 
         <button
@@ -89,7 +89,7 @@ export default function Navbar() {
               onClick={() => go("contact")}
               className="mt-2 rounded-full border border-accent px-5 py-2.5 text-sm font-medium text-accent"
             >
-              Hubungi Saya
+              Hubungi Kami
             </button>
           </div>
         </div>

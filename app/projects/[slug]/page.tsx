@@ -82,9 +82,9 @@ export default function CaseStudyPage({ params }: Params) {
           <p className="mt-4 leading-relaxed text-zinc-400">{detail.overview}</p>
         </section>
 
-        {/* Yang Saya Kerjakan */}
+        {/* Yang Kami Kerjakan */}
         <section className="mt-12">
-          <h2 className="font-heading text-2xl font-bold text-white">Yang Saya Kerjakan</h2>
+          <h2 className="font-heading text-2xl font-bold text-white">Yang Kami Kerjakan</h2>
           <ul className="mt-5 grid gap-3 sm:grid-cols-2">
             {detail.work.map((w) => (
               <li key={w} className="flex items-start gap-3 text-sm text-zinc-300">
