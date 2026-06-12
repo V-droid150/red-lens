@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { Check } from "lucide-react";
+import { Check, ArrowUpRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { projects, projectDetails } from "@/lib/data";
@@ -51,9 +51,10 @@ export default function CaseStudyPage({ params }: Params) {
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-accent px-6 py-2.5 text-sm font-medium text-white transition hover:brightness-110"
+            className="inline-flex items-center gap-1.5 rounded-full bg-accent px-6 py-2.5 text-sm font-medium text-white transition hover:brightness-110"
           >
-            Lihat Demo Live ↗
+            Lihat Demo Live
+            <ArrowUpRight className="h-4 w-4" />
           </a>
           <div className="flex flex-wrap gap-2">
             {project.stack.map((t) => (
@@ -138,9 +139,10 @@ export default function CaseStudyPage({ params }: Params) {
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full border border-accent px-6 py-2.5 text-sm font-medium text-accent transition hover:bg-accent hover:text-white"
+            className="inline-flex items-center gap-1.5 rounded-full border border-accent px-6 py-2.5 text-sm font-medium text-accent transition hover:bg-accent hover:text-white"
           >
-            Lihat Demo Live ↗
+            Lihat Demo Live
+            <ArrowUpRight className="h-4 w-4" />
           </a>
         </div>
       </div>

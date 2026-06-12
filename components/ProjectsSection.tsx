@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { projects } from "@/lib/data";
 import HoloBackground from "@/components/HoloBackground";
@@ -95,9 +96,10 @@ export default function ProjectsSection() {
                     href={p.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-medium text-accent transition hover:underline"
+                    className="inline-flex items-center gap-1 text-sm font-medium text-accent transition hover:underline"
                   >
-                    Lihat Demo ↗
+                    Lihat Demo
+                    <ArrowUpRight className="h-4 w-4" />
                   </a>
                   <Link
                     href={`/projects/${p.id}`}
