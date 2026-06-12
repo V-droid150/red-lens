@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { projects } from "@/lib/data";
 import HoloBackground from "@/components/HoloBackground";
@@ -34,22 +35,31 @@ export default function ProjectsSection() {
                 className="relative flex h-60 items-center justify-center overflow-hidden"
                 style={{ background: `linear-gradient(135deg, ${p.color}, #111)` }}
               >
-                <div className="w-[80%] overflow-hidden rounded-lg border border-white/10 shadow-2xl">
+                <div className="w-[86%] overflow-hidden rounded-lg border border-white/10 shadow-2xl">
                   <div className="flex h-6 items-center gap-1.5 px-3" style={{ background: "#181818" }}>
                     <span className="h-2 w-2 rounded-full bg-white/20" />
                     <span className="h-2 w-2 rounded-full bg-white/20" />
                     <span className="h-2 w-2 rounded-full bg-white/20" />
                   </div>
-                  <div
-                    className="flex h-28 items-center justify-center"
-                    style={{ background: "#0a0a0a" }}
-                  >
-                    <span
-                      className="font-heading text-lg font-bold"
-                      style={{ color: p.accentColor }}
-                    >
-                      {p.title}
-                    </span>
+                  <div className="relative h-44 overflow-hidden" style={{ background: "#0a0a0a" }}>
+                    {p.image ? (
+                      <Image
+                        src={p.image}
+                        alt={`Tampilan ${p.title}`}
+                        fill
+                        sizes="(max-width: 768px) 90vw, 45vw"
+                        className="object-cover object-top"
+                      />
+                    ) : (
+                      <div className="flex h-full items-center justify-center">
+                        <span
+                          className="font-heading text-lg font-bold"
+                          style={{ color: p.accentColor }}
+                        >
+                          {p.title}
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div

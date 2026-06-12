@@ -9,7 +9,7 @@ const cards = [
     id: 1,
     title: "Kopi Nusantara",
     category: "Landing Page",
-    image: "https://coffeeshop-website-cyan.vercel.app/og-image.png",
+    image: "/projects/kopi-nusantara.jpg",
     color: "#3b1a08",
     accent: "#c2410c",
     url: "https://coffeeshop-website-cyan.vercel.app/",
@@ -18,7 +18,7 @@ const cards = [
     id: 2,
     title: "SantaMaria",
     category: "Web App",
-    image: "",
+    image: "/projects/santamaria.jpg",
     color: "#0a1628",
     accent: "#eab308",
     url: "https://santa-maria-project.vercel.app/dashboard",
@@ -174,7 +174,7 @@ export default function Carousel3D({ showDots = true }: { showDots?: boolean }) 
                     style={{
                       backgroundImage: `url(${card.image})`,
                       backgroundSize: "cover",
-                      backgroundPosition: "center",
+                      backgroundPosition: "top center",
                     }}
                   />
                 ) : (
