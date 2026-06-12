@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import GlowOrb from "./GlowOrb";
 import Carousel3D from "./Carousel3D";
 import HoloBackground from "./HoloBackground";
+import Typewriter from "./Typewriter";
 
 const TECH = ["Next.js", "React", "TypeScript", "Tailwind", "Figma"];
 
@@ -75,7 +76,11 @@ export default function HeroSection() {
         </motion.h1>
 
         <motion.p {...fade(0.2)} className="mx-auto mt-6 max-w-xl text-lg text-zinc-400">
-          Solusi digital untuk UMKM Indonesia yang ingin tampil serius di internet.
+          <Typewriter
+            text="Solusi digital untuk UMKM Indonesia yang ingin tampil serius di internet."
+            startDelay={700}
+            speed={40}
+          />
         </motion.p>
 
         <motion.div {...fade(0.3)} className="mt-8 flex flex-wrap justify-center gap-4">
