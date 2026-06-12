@@ -6,7 +6,7 @@ import Logo from "@/components/Logo";
 
 const NAV = [
   { label: "Layanan", id: "layanan" },
-  { label: "Karya", id: "karya" },
+  { label: "Project", id: "karya" },
   { label: "Tentang", id: "tentang" },
   { label: "Kontak", id: "contact" },
 ];
@@ -61,7 +61,7 @@ export default function Navbar() {
           onClick={() => go("contact")}
           className="hidden rounded-full border border-accent px-5 py-2 text-sm font-medium text-accent transition hover:bg-accent hover:text-white md:block"
         >
-          Hubungi Kami
+          Hubungi Saya
         </button>
 
         <button
@@ -89,7 +89,7 @@ export default function Navbar() {
               onClick={() => go("contact")}
               className="mt-2 rounded-full border border-accent px-5 py-2.5 text-sm font-medium text-accent"
             >
-              Hubungi Kami
+              Hubungi Saya
             </button>
           </div>
         </div>

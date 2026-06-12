@@ -53,9 +53,9 @@ export default function HeroSection() {
           {...fade(0.1)}
           className="mt-6 font-heading text-5xl font-extrabold leading-[1.05] md:text-7xl"
         >
-          <span className="text-white">Your Website </span>
+          <span className="text-white">We Build Websites That </span>
           <span className="relative inline-block text-accent">
-            solutions
+            Work
             <svg
               className="absolute -bottom-2 left-0 w-full"
               viewBox="0 0 300 12"
@@ -71,11 +71,11 @@ export default function HeroSection() {
               />
             </svg>
           </span>
+          <span className="text-white">.</span>
         </motion.h1>
 
         <motion.p {...fade(0.2)} className="mx-auto mt-6 max-w-xl text-lg text-zinc-400">
-          Web developer & UI/UX designer yang membantu UMKM Indonesia tampil profesional melalui
-          landing page dan web app yang estetik dan fungsional.
+          Solusi digital untuk UMKM Indonesia yang ingin tampil serius di internet.
         </motion.p>
 
         <motion.div {...fade(0.3)} className="mt-8 flex flex-wrap justify-center gap-4">
@@ -83,13 +83,13 @@ export default function HeroSection() {
             onClick={() => go("karya")}
             className="rounded-full bg-accent px-8 py-3 text-sm font-medium text-white transition hover:brightness-110"
           >
-            Lihat Karya →
+            See Project →
           </button>
           <button
             onClick={() => go("contact")}
             className="rounded-full border border-accent px-8 py-3 text-sm font-medium text-accent transition hover:bg-accent hover:text-white"
           >
-            Diskusi Proyek
+            Diskusi Project
           </button>
         </motion.div>
 

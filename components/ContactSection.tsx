@@ -84,7 +84,7 @@ export default function ContactSection() {
             Mari Wujudkan Bersama.
           </h2>
           <p className="mt-4 text-zinc-400">
-            Ceritakan kebutuhan bisnis Anda dan kami akan balas dalam 1×24 jam.
+            Ceritakan kebutuhan bisnis Anda dan saya akan balas dalam 1×24 jam.
           </p>
         </div>
 
@@ -116,7 +116,7 @@ export default function ContactSection() {
               <div className="flex flex-col items-center gap-3 rounded-xl border border-accent bg-accent/10 px-6 py-12 text-center">
                 <CheckCircle2 className="h-12 w-12 text-accent" />
                 <p className="text-zinc-200">
-                  Pesan terkirim! Kami akan menghubungi Anda segera.
+                  Pesan terkirim! Saya akan menghubungi Anda segera.
                 </p>
                 <button
                   onClick={() => setSent(false)}

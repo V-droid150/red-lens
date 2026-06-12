@@ -1,4 +1,4 @@
-import { InstagramIcon, TiktokIcon, WhatsappIcon } from "@/components/BrandIcons";
+import { InstagramIcon, TiktokIcon, WhatsappIcon, LinkedinIcon } from "@/components/BrandIcons";
 import Logo from "@/components/Logo";
 import HoloBackground from "@/components/HoloBackground";
 
@@ -13,6 +13,7 @@ const SOCIALS = [
   { Icon: InstagramIcon, href: "https://www.instagram.com/kevinkie_/", label: "Instagram" },
   { Icon: TiktokIcon, href: "#", label: "TikTok" },
   { Icon: WhatsappIcon, href: "https://wa.me/6282113515619", label: "WhatsApp" },
+  { Icon: LinkedinIcon, href: "#", label: "LinkedIn" },
 ];
 
 export default function Footer() {

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Check } from "lucide-react";
@@ -15,7 +16,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: Params): Metadata {
   const project = projects.find((p) => p.id === params.slug);
   return {
-    title: project ? `${project.title} — Case Study | VinSite` : "Case Study",
+    title: project ? `${project.title} — Case Study | Red Lens` : "Case Study",
   };
 }
 
@@ -31,7 +32,7 @@ export default function CaseStudyPage({ params }: Params) {
       <div className="mx-auto max-w-4xl px-5 pb-24 pt-32 sm:px-8">
         {/* Hero */}
         <Link href="/#karya" className="text-sm text-zinc-500 transition hover:text-accent">
-          ← Kembali ke Karya
+          ← Kembali ke Project
         </Link>
 
         <span
@@ -68,12 +69,28 @@ export default function CaseStudyPage({ params }: Params) {
 
         {/* Preview banner */}
         <div
-          className="mt-12 flex h-56 items-center justify-center rounded-2xl border border-white/5"
-          style={{ background: `linear-gradient(135deg, ${project.color}, #111)` }}
+          className="relative mt-12 w-full overflow-hidden rounded-2xl border border-white/5"
+          style={{ aspectRatio: "1100 / 710" }}
         >
-          <span className="font-heading text-3xl font-bold" style={{ color: project.accentColor }}>
-            {project.title}
-          </span>
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={`Tampilan ${project.title}`}
+              fill
+              sizes="(max-width: 896px) 100vw, 896px"
+              className="object-cover object-top"
+              priority
+            />
+          ) : (
+            <div
+              className="flex h-full items-center justify-center"
+              style={{ background: `linear-gradient(135deg, ${project.color}, #111)` }}
+            >
+              <span className="font-heading text-3xl font-bold" style={{ color: project.accentColor }}>
+                {project.title}
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Gambaran Proyek */}
@@ -82,9 +99,9 @@ export default function CaseStudyPage({ params }: Params) {
           <p className="mt-4 leading-relaxed text-zinc-400">{detail.overview}</p>
         </section>
 
-        {/* Yang Kami Kerjakan */}
+        {/* Yang Saya Kerjakan */}
         <section className="mt-12">
-          <h2 className="font-heading text-2xl font-bold text-white">Yang Kami Kerjakan</h2>
+          <h2 className="font-heading text-2xl font-bold text-white">Yang Saya Kerjakan</h2>
           <ul className="mt-5 grid gap-3 sm:grid-cols-2">
             {detail.work.map((w) => (
               <li key={w} className="flex items-start gap-3 text-sm text-zinc-300">
@@ -115,7 +132,7 @@ export default function CaseStudyPage({ params }: Params) {
         {/* Bottom buttons */}
         <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-zinc-900 pt-8">
           <Link href="/#karya" className="text-sm text-zinc-400 transition hover:text-white">
-            ← Kembali ke Karya
+            ← Kembali ke Project
           </Link>
           <a
             href={project.liveUrl}
