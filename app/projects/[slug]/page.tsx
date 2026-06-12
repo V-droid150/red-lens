@@ -42,7 +42,7 @@ export default function CaseStudyPage({ params }: Params) {
           {project.category}
         </span>
 
-        <h1 className="mt-4 font-heading text-5xl font-extrabold text-white md:text-6xl">
+        <h1 className="mt-4 font-heading text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
           {project.title}
         </h1>
 

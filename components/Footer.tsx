@@ -4,7 +4,7 @@ import HoloBackground from "@/components/HoloBackground";
 
 const NAV = [
   { label: "Layanan", href: "#layanan" },
-  { label: "Karya", href: "#karya" },
+  { label: "Project", href: "#karya" },
   { label: "Tentang", href: "#tentang" },
   { label: "Kontak", href: "#contact" },
 ];

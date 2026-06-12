@@ -7,9 +7,9 @@ import HoloBackground from "@/components/HoloBackground";
 
 export default function AboutSection() {
   return (
-    <section id="tentang" className="relative py-32" style={{ background: "#0a0a0a" }}>
+    <section id="tentang" className="relative py-20 md:py-32" style={{ background: "#0a0a0a" }}>
       <HoloBackground />
-      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-16 px-5 sm:px-8 lg:grid-cols-2">
+      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-5 sm:px-8 md:grid-cols-2 md:gap-16">
         {/* Kolom kiri: avatar + stats */}
         <div>
           <div className="relative mx-auto h-[200px] w-[200px]">

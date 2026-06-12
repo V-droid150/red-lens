@@ -18,7 +18,7 @@ function go(id: string) {
 
 export default function ServicesSection() {
   return (
-    <section id="layanan" className="relative py-32" style={{ background: "#0a0a0a" }}>
+    <section id="layanan" className="relative py-20 md:py-32" style={{ background: "#0a0a0a" }}>
       <HoloBackground />
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">

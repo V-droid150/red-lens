@@ -8,7 +8,7 @@ import HoloBackground from "@/components/HoloBackground";
 
 export default function ProjectsSection() {
   return (
-    <section id="karya" className="relative py-32">
+    <section id="karya" className="relative py-20 md:py-32">
       <HoloBackground flip />
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <div className="max-w-2xl">

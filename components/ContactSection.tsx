@@ -71,7 +71,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="relative py-32" style={{ background: "#0a0a0a" }}>
+    <section id="contact" className="relative py-20 md:py-32" style={{ background: "#0a0a0a" }}>
       <HoloBackground flip />
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <div className="max-w-2xl">
@@ -88,7 +88,7 @@ export default function ContactSection() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-12 lg:grid-cols-2">
+        <div className="mt-14 grid gap-12 md:grid-cols-2">
           {/* Info kontak */}
           <div className="space-y-6">
             {CONTACTS.map(({ Icon, label, value, href }) => (

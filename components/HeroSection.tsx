@@ -19,7 +19,7 @@ function go(id: string) {
 
 export default function HeroSection() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-5 py-32 text-center sm:px-8">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-5 py-28 text-center sm:px-8 md:py-32">
       <HoloBackground />
       <GlowOrb x="50%" y="-15%" size={700} opacity={0.06} />
 
@@ -51,7 +51,7 @@ export default function HeroSection() {
 
         <motion.h1
           {...fade(0.1)}
-          className="mt-6 font-heading text-5xl font-extrabold leading-[1.05] md:text-7xl"
+          className="mt-6 font-heading text-4xl font-extrabold leading-[1.08] sm:text-5xl sm:leading-[1.05] md:text-7xl"
         >
           <span className="text-white">We Build Websites That </span>
           <span className="relative inline-block text-accent">
