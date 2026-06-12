@@ -16,10 +16,43 @@ const inter = Inter({
   display: "swap",
 });
 
+const SITE_URL = "https://red-lens.vercel.app";
+const SITE_TITLE = "Red Lens — Your Website Solutions";
+const SITE_DESC =
+  "Red Lens — web developer & UI/UX designer yang membantu UMKM Indonesia tampil profesional lewat landing page dan web app yang estetik dan fungsional.";
+
 export const metadata: Metadata = {
-  title: "Red Lens — Web Developer & UI/UX Designer",
-  description:
-    "Red Lens — web developer dan UI/UX designer yang membantu UMKM Indonesia tampil profesional di internet.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    template: "%s — Red Lens",
+  },
+  description: SITE_DESC,
+  keywords: [
+    "Red Lens",
+    "web developer",
+    "UI/UX designer",
+    "jasa pembuatan website",
+    "website UMKM",
+    "landing page",
+    "web app",
+    "Indonesia",
+  ],
+  authors: [{ name: "Red Lens" }],
+  creator: "Red Lens",
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: SITE_URL,
+    siteName: "Red Lens",
+    title: SITE_TITLE,
+    description: SITE_DESC,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESC,
+  },
 };
 
 export default function RootLayout({
