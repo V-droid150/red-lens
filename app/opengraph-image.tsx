@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 // Gambar preview saat link dibagikan (WhatsApp, IG, FB, LinkedIn, dll)
 export const runtime = "edge";
-export const alt = "Red Lens — Your Website Solutions";
+export const alt = "Red Lens — We Build Websites That Work";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -51,8 +51,8 @@ export default function OpengraphImage() {
             lineHeight: 1.04,
           }}
         >
-          <span style={{ marginRight: "0.3em" }}>Your Website</span>
-          <span style={{ color: "#dc2626" }}>Solutions</span>
+          <span style={{ marginRight: "0.3em" }}>We Build Websites That</span>
+          <span style={{ color: "#dc2626" }}>Work.</span>
         </div>
 
         {/* Tagline */}
