@@ -20,7 +20,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const SITE_URL = "https://red-lens.vercel.app";
+const SITE_URL = "https://redlens.pro";
 const SITE_TITLE = "Red Lens — We Build Websites That Work";
 const SITE_DESC =
   "Red Lens — web developer & UI/UX designer yang membantu UMKM Indonesia tampil profesional lewat landing page dan web app yang estetik dan fungsional.";
