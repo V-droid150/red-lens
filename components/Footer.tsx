@@ -9,8 +9,10 @@ import { scrollToSection } from "@/components/SmoothScroll";
 
 const NAV = [
   { label: "Layanan", id: "layanan" },
+  { label: "Proses", id: "proses" },
   { label: "Project", id: "karya" },
   { label: "Tentang", id: "tentang" },
+  { label: "FAQ", id: "faq" },
   { label: "Kontak", id: "contact" },
 ];
 

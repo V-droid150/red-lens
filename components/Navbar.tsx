@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Logo from "@/components/Logo";
-import Magnetic from "@/components/Magnetic";
 import { scrollToSection, scrollToTop } from "@/components/SmoothScroll";
 
 const NAV = [
   { label: "Layanan", id: "layanan" },
+  { label: "Proses", id: "proses" },
   { label: "Project", id: "karya" },
   { label: "Tentang", id: "tentang" },
   { label: "Kontak", id: "contact" },
@@ -59,17 +59,6 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="hidden md:block">
-          <Magnetic>
-            <button
-              onClick={() => go("contact")}
-              className="rounded-full border border-accent px-5 py-2 text-sm font-medium text-accent transition hover:bg-accent hover:text-white"
-            >
-              Hubungi Saya
-            </button>
-          </Magnetic>
-        </div>
-
         <button
           onClick={() => setOpen((o) => !o)}
           className="text-white md:hidden"
@@ -91,12 +80,6 @@ export default function Navbar() {
                 {n.label}
               </button>
             ))}
-            <button
-              onClick={() => go("contact")}
-              className="mt-2 rounded-full border border-accent px-5 py-2.5 text-sm font-medium text-accent"
-            >
-              Hubungi Saya
-            </button>
           </div>
         </div>
       )}

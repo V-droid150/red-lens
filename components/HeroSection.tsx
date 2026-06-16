@@ -10,8 +10,6 @@ import Typewriter from "./Typewriter";
 import { RevealLines } from "./Reveal";
 import { scrollToSection } from "./SmoothScroll";
 
-const TECH = ["Next.js", "React", "TypeScript", "Tailwind", "Figma"];
-
 export default function HeroSection() {
   return (
     <section className="relative flex min-h-[100svh] flex-col overflow-hidden">
@@ -20,7 +18,7 @@ export default function HeroSection() {
       <Blob className="right-[6%] bottom-[12%]" size={360} opacity={0.25} />
 
       <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
-        <div className="w-full max-w-5xl opacity-60">
+        <div className="w-full max-w-5xl translate-y-[22%] opacity-60 sm:translate-y-[26%]">
           <Carousel3D showDots={false} />
         </div>
         <div
@@ -116,21 +114,6 @@ export default function HeroSection() {
           </Magnetic>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-          className="mt-6 flex flex-wrap justify-center gap-2 sm:mt-8"
-        >
-          {TECH.map((t) => (
-            <span
-              key={t}
-              className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-zinc-500 backdrop-blur-sm"
-            >
-              {t}
-            </span>
-          ))}
-        </motion.div>
       </div>
 
       {/* Scroll indicator */}

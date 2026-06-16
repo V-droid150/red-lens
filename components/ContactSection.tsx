@@ -158,7 +158,7 @@ export default function ContactSection() {
                   <label className="mb-1.5 block text-sm font-medium text-zinc-400">Jenis layanan</label>
                   <select {...register("service")} className={inputClass}>
                     <option>Landing Page</option>
-                    <option>Web App</option>
+                    <option>Web Page</option>
                     <option>UI/UX Design</option>
                     <option>Lainnya</option>
                   </select>

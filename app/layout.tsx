@@ -5,6 +5,7 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import CustomCursor from "@/components/CustomCursor";
 import Preloader from "@/components/Preloader";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -67,6 +68,7 @@ export default function RootLayout({
       <body className="bg-background text-text-primary font-sans antialiased">
         <Preloader />
         <CustomCursor />
+        <WhatsAppFloat />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
