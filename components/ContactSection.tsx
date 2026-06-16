@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { Mail, Loader2, CheckCircle2 } from "lucide-react";
 import { WhatsappIcon, InstagramIcon } from "@/components/BrandIcons";
 import HoloBackground from "@/components/HoloBackground";
+import Magnetic from "@/components/Magnetic";
+import { Reveal, RevealLines } from "@/components/Reveal";
 
 type FormValues = {
   name: string;
@@ -71,24 +73,28 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="relative py-20 md:py-32" style={{ background: "#0a0a0a" }}>
+    <section id="contact" className="relative py-24 md:py-36" style={{ background: "#0a0a0a" }}>
       <HoloBackground flip />
-      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="max-w-2xl">
-          <p className="text-[11px] font-medium uppercase tracking-widest text-accent">
-            ✦ Mulai proyek
-          </p>
-          <h2 className="mt-4 font-heading text-4xl font-extrabold text-white md:text-5xl">
-            Punya Ide?
-            <br />
-            Mari Wujudkan Bersama.
-          </h2>
-          <p className="mt-4 text-zinc-400">
-            Ceritakan kebutuhan bisnis Anda dan saya akan balas dalam 1×24 jam.
-          </p>
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="max-w-3xl">
+          <Reveal>
+            <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-accent">
+              ✦ Mulai Proyek
+            </p>
+          </Reveal>
+          <RevealLines
+            as="h2"
+            className="mt-4 font-heading text-3xl font-extrabold uppercase leading-[1] tracking-tight text-white md:text-5xl"
+            lines={["Punya Ide?", "Mari Wujudkan."]}
+          />
+          <Reveal delay={0.1}>
+            <p className="mt-5 max-w-xl text-zinc-400">
+              Ceritakan kebutuhan bisnis Anda dan saya akan balas dalam 1×24 jam.
+            </p>
+          </Reveal>
         </div>
 
-        <div className="mt-14 grid gap-12 md:grid-cols-2">
+        <div className="mt-16 grid gap-12 md:grid-cols-2 md:gap-20">
           {/* Info kontak */}
           <div className="space-y-6">
             {CONTACTS.map(({ Icon, label, value, href }) => (
@@ -99,12 +105,14 @@ export default function ContactSection() {
                 rel="noopener noreferrer"
                 className="group flex items-center gap-4"
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10">
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 transition group-hover:bg-accent/20">
                   <Icon className="h-5 w-5 text-accent" />
                 </span>
                 <span>
                   <span className="block text-xs uppercase tracking-wide text-zinc-500">{label}</span>
-                  <span className="block text-zinc-300 transition group-hover:text-white">{value}</span>
+                  <span className="block text-lg text-zinc-200 transition group-hover:text-white">
+                    {value}
+                  </span>
                 </span>
               </a>
             ))}
@@ -113,11 +121,9 @@ export default function ContactSection() {
           {/* Form */}
           <div>
             {sent ? (
-              <div className="flex flex-col items-center gap-3 rounded-xl border border-accent bg-accent/10 px-6 py-12 text-center">
+              <div className="flex flex-col items-center gap-3 rounded-2xl border border-accent bg-accent/10 px-6 py-14 text-center">
                 <CheckCircle2 className="h-12 w-12 text-accent" />
-                <p className="text-zinc-200">
-                  Pesan terkirim! Saya akan menghubungi Anda segera.
-                </p>
+                <p className="text-zinc-200">Pesan terkirim! Saya akan menghubungi Anda segera.</p>
                 <button
                   onClick={() => setSent(false)}
                   className="mt-2 text-sm text-accent hover:underline"
@@ -177,14 +183,16 @@ export default function ContactSection() {
                   </p>
                 )}
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="flex w-full items-center justify-center gap-2 rounded-full bg-accent py-3 text-sm font-medium text-white transition hover:brightness-110 disabled:opacity-60"
-                >
-                  {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-                  {loading ? "Mengirim..." : "Kirim Pesan →"}
-                </button>
+                <Magnetic strength={0.2} className="w-full">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="flex w-full items-center justify-center gap-2 rounded-full bg-accent py-3.5 text-sm font-medium text-white transition hover:brightness-110 disabled:opacity-60"
+                  >
+                    {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+                    {loading ? "Mengirim..." : "Kirim Pesan →"}
+                  </button>
+                </Magnetic>
               </form>
             )}
           </div>

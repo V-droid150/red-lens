@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Syne, Inter } from "next/font/google";
+import "lenis/dist/lenis.css";
 import "./globals.css";
+import SmoothScroll from "@/components/SmoothScroll";
+import CustomCursor from "@/components/CustomCursor";
+import Preloader from "@/components/Preloader";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -60,7 +64,11 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="id" className={`${syne.variable} ${inter.variable}`}>
-      <body className="bg-background text-text-primary font-sans antialiased">{children}</body>
+      <body className="bg-background text-text-primary font-sans antialiased">
+        <Preloader />
+        <CustomCursor />
+        <SmoothScroll>{children}</SmoothScroll>
+      </body>
     </html>
   );
 }

@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Logo from "@/components/Logo";
+import Magnetic from "@/components/Magnetic";
+import { scrollToSection, scrollToTop } from "@/components/SmoothScroll";
 
 const NAV = [
   { label: "Layanan", id: "layanan" },
@@ -24,20 +26,20 @@ export default function Navbar() {
 
   const go = (id: string) => {
     setOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    scrollToSection(id);
   };
 
   return (
     <header
       className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? "border-b border-accent/10 bg-background/85 backdrop-blur-md"
+          ? "border-b border-accent/10 bg-background/70 backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={scrollToTop}
           className="flex items-center gap-2"
           aria-label="Red Lens"
         >
@@ -45,24 +47,28 @@ export default function Navbar() {
           <span className="font-heading text-lg font-bold text-white">Red Lens</span>
         </button>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-9 md:flex">
           {NAV.map((n) => (
             <button
               key={n.id}
               onClick={() => go(n.id)}
-              className="text-sm text-zinc-400 transition hover:text-white"
+              className="link-underline text-sm text-zinc-400 transition hover:text-white"
             >
               {n.label}
             </button>
           ))}
         </div>
 
-        <button
-          onClick={() => go("contact")}
-          className="hidden rounded-full border border-accent px-5 py-2 text-sm font-medium text-accent transition hover:bg-accent hover:text-white md:block"
-        >
-          Hubungi Saya
-        </button>
+        <div className="hidden md:block">
+          <Magnetic>
+            <button
+              onClick={() => go("contact")}
+              className="rounded-full border border-accent px-5 py-2 text-sm font-medium text-accent transition hover:bg-accent hover:text-white"
+            >
+              Hubungi Saya
+            </button>
+          </Magnetic>
+        </div>
 
         <button
           onClick={() => setOpen((o) => !o)}

@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { LayoutTemplate, Code2, Check } from "lucide-react";
+import { LayoutTemplate, Code2, Check, ArrowUpRight } from "lucide-react";
 import { FigmaIcon } from "@/components/BrandIcons";
 import { services } from "@/lib/data";
 import HoloBackground from "@/components/HoloBackground";
+import { Reveal, RevealLines } from "@/components/Reveal";
+import { scrollToSection } from "@/components/SmoothScroll";
 
 const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   layout: LayoutTemplate,
@@ -12,25 +14,34 @@ const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   figma: FigmaIcon,
 };
 
-function go(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-}
-
 export default function ServicesSection() {
   return (
-    <section id="layanan" className="relative py-20 md:py-32" style={{ background: "#0a0a0a" }}>
+    <section id="layanan" className="relative py-24 md:py-36" style={{ background: "#0a0a0a" }}>
       <HoloBackground />
-      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-[11px] font-medium uppercase tracking-widest text-accent">
-            ✦ Our offer
-          </p>
-          <h2 className="mt-4 font-heading text-4xl font-extrabold text-white md:text-5xl">
-            Our Service
-          </h2>
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <Reveal>
+              <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-accent">
+                ✦ Layanan
+              </p>
+            </Reveal>
+            <RevealLines
+              as="h2"
+              className="mt-4 font-heading text-3xl font-extrabold uppercase leading-[1] tracking-tight text-white md:text-5xl"
+              lines={["Yang Saya", "Kerjakan"]}
+            />
+          </div>
+          <Reveal delay={0.1}>
+            <p className="max-w-sm text-sm leading-relaxed text-zinc-400 md:text-right">
+              Dari halaman tunggal hingga aplikasi web penuh — dirancang dan dibangun
+              untuk membuat bisnis Anda tampil serius.
+            </p>
+          </Reveal>
         </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
+        {/* Daftar layanan bernomor */}
+        <div className="mt-16 border-t border-white/10">
           {services.map((s, i) => {
             const Icon = ICONS[s.icon] ?? LayoutTemplate;
             return (
@@ -38,29 +49,45 @@ export default function ServicesSection() {
                 key={s.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group rounded-2xl border border-accent/10 bg-surface p-8 transition duration-300 hover:-translate-y-1 hover:border-accent/30 hover:bg-surface-2"
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, delay: i * 0.08 }}
+                className="group relative grid grid-cols-1 gap-6 border-b border-white/10 py-10 transition-colors duration-300 hover:bg-white/[0.02] md:grid-cols-12 md:items-start md:gap-8"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10">
-                  <Icon className="h-6 w-6 text-accent" />
+                {/* Nomor + ikon */}
+                <div className="flex items-center gap-4 md:col-span-3">
+                  <span className="font-heading text-2xl font-bold text-accent/60 transition group-hover:text-accent">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 transition group-hover:bg-accent/20">
+                    <Icon className="h-5 w-5 text-accent" />
+                  </span>
                 </div>
-                <h3 className="mt-5 font-heading text-xl font-bold text-white">{s.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-400">{s.description}</p>
-                <ul className="mt-5 space-y-2">
-                  {s.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2 text-sm text-zinc-300">
-                      <Check className="h-4 w-4 shrink-0 text-accent" strokeWidth={3} />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  onClick={() => go("contact")}
-                  className="mt-6 text-sm font-medium text-accent transition hover:underline"
-                >
-                  Diskusi Harga →
-                </button>
+
+                {/* Judul */}
+                <div className="md:col-span-4">
+                  <h3 className="font-heading text-2xl font-bold text-white md:text-3xl">
+                    {s.title}
+                  </h3>
+                  <button
+                    onClick={() => scrollToSection("contact")}
+                    className="link-underline mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent"
+                  >
+                    Diskusi Harga <ArrowUpRight className="h-4 w-4" />
+                  </button>
+                </div>
+
+                {/* Deskripsi + fitur */}
+                <div className="md:col-span-5">
+                  <p className="text-sm leading-relaxed text-zinc-400">{s.description}</p>
+                  <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2">
+                    {s.features.map((f) => (
+                      <li key={f} className="flex items-center gap-2 text-sm text-zinc-300">
+                        <Check className="h-4 w-4 shrink-0 text-accent" strokeWidth={3} />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
             );
           })}

@@ -2,18 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+/* Lenis mengatur scroll halus → matikan smooth bawaan browser agar tak bentrok */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 body {
   color: #f5f5f5;
-  /* Pattern grid global: garis 1px tiap 60px */
+  /* Pattern grid global: garis 1px tiap 64px */
   background-color: #080808;
   background-image:
-    linear-gradient(rgba(220, 38, 38, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(220, 38, 38, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(rgba(220, 38, 38, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(220, 38, 38, 0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Sembunyikan kursor sistem saat kursor custom aktif (desktop) */
+@media (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
 }
 
 /* Scrollbar tipis merah */
@@ -41,5 +57,36 @@ body {
   }
   50% {
     opacity: 0;
+  }
+}
+
+/* Marquee teks berjalan */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee linear infinite;
+}
+
+/* Garis bawah link "lihat selengkapnya" ala studio */
+.link-underline {
+  background-image: linear-gradient(#dc2626, #dc2626);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s ease;
+}
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
   }
 }

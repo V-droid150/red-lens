@@ -4,68 +4,69 @@ import { motion } from "framer-motion";
 import { skills, stats } from "@/lib/data";
 import Logo from "@/components/Logo";
 import HoloBackground from "@/components/HoloBackground";
+import { Reveal, RevealLines } from "@/components/Reveal";
 
 export default function AboutSection() {
   return (
-    <section id="tentang" className="relative py-20 md:py-32" style={{ background: "#0a0a0a" }}>
+    <section id="tentang" className="relative py-24 md:py-36" style={{ background: "#0a0a0a" }}>
       <HoloBackground />
-      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-5 sm:px-8 md:grid-cols-2 md:gap-16">
+      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 md:grid-cols-2 md:gap-20">
         {/* Kolom kiri: avatar + stats */}
         <div>
-          <div className="relative mx-auto h-[200px] w-[200px]">
-            {/* Ring berputar */}
+          <div className="relative mx-auto h-[220px] w-[220px]">
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               className="absolute inset-0 rounded-full border-2 border-accent/20 border-t-accent"
             />
-            {/* Avatar */}
             <div
               className="absolute inset-2 flex items-center justify-center rounded-full border-2 border-accent/30"
               style={{ background: "linear-gradient(135deg, #1a0000, #3b0000)" }}
             >
-              <Logo className="w-28" />
+              <Logo className="w-32" />
             </div>
           </div>
 
-          <div className="mx-auto mt-10 grid max-w-md grid-cols-3 gap-4">
-            {stats.map((s) => (
-              <div
-                key={s.label}
-                className="rounded-xl border border-accent/10 bg-surface p-4 text-center"
-              >
-                <p className="font-heading text-2xl font-extrabold text-accent">{s.value}</p>
-                <p className="mt-1 text-[11px] uppercase tracking-wide text-zinc-500">{s.label}</p>
-              </div>
+          <div className="mx-auto mt-12 grid max-w-md grid-cols-3 gap-4">
+            {stats.map((s, i) => (
+              <Reveal key={s.label} delay={i * 0.08}>
+                <div className="rounded-2xl border border-accent/10 bg-surface p-5 text-center">
+                  <p className="font-heading text-3xl font-extrabold text-accent">{s.value}</p>
+                  <p className="mt-1 text-[11px] uppercase tracking-wide text-zinc-500">{s.label}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
 
         {/* Kolom kanan: bio + skills */}
         <div>
-          <p className="text-[11px] font-medium uppercase tracking-widest text-accent">
-            ✦ Tentang saya
-          </p>
-          <h2 className="mt-4 font-heading text-4xl font-extrabold text-white md:text-5xl">
-            Saya Siap
-            <br />
-            Membantu UMKM
-          </h2>
-
-          <div className="mt-6 space-y-4 text-zinc-400">
-            <p>
-              Saya web developer dan UI/UX designer yang fokus membantu UMKM Indonesia
-              berkembang secara digital. Saya percaya website yang bagus bukan hanya soal estetika —
-              tapi soal bagaimana ia bekerja untuk bisnis Anda.
+          <Reveal>
+            <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-accent">
+              ✦ Tentang Saya
             </p>
-            <p>
-              Dengan pendekatan design-first, saya memastikan setiap proyek tidak hanya indah di
-              mata, tapi juga intuitif bagi pengguna dan menghasilkan konversi nyata bagi pemilik
-              bisnis.
-            </p>
-          </div>
+          </Reveal>
+          <RevealLines
+            as="h2"
+            className="mt-4 font-heading text-3xl font-extrabold uppercase leading-[1] tracking-tight text-white md:text-4xl"
+            lines={["Saya Bantu", "UMKM Naik", "Kelas"]}
+          />
 
-          <div className="mt-8 space-y-4">
+          <Reveal delay={0.1}>
+            <div className="mt-7 space-y-4 text-zinc-400">
+              <p>
+                Saya web developer dan UI/UX designer yang fokus membantu UMKM Indonesia
+                berkembang secara digital. Website yang bagus bukan hanya soal estetika —
+                tapi soal bagaimana ia bekerja untuk bisnis Anda.
+              </p>
+              <p>
+                Dengan pendekatan design-first, setiap proyek tidak hanya indah di mata, tapi
+                juga intuitif bagi pengguna dan menghasilkan konversi nyata bagi pemilik bisnis.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="mt-10 space-y-4">
             {skills.map((s, i) => (
               <div key={s.name}>
                 <div className="mb-1.5 flex items-center justify-between text-sm">
