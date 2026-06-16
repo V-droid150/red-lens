@@ -123,7 +123,7 @@ export default function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4 }}
         aria-label="Scroll ke bawah"
-        className="relative z-10 mx-auto mb-3 hidden items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-zinc-500 transition hover:text-accent sm:flex"
+        className="relative z-10 mx-auto mb-5 mt-10 hidden items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-zinc-500 transition hover:text-accent sm:mt-14 sm:flex"
       >
         <motion.span animate={{ y: [0, 5, 0] }} transition={{ duration: 1.6, repeat: Infinity }}>
           <ArrowDown className="h-4 w-4" />
@@ -132,7 +132,7 @@ export default function HeroSection() {
       </motion.button>
 
       {/* Marquee bawah */}
-      <div className="relative z-10 border-y border-white/10 bg-background/40 py-4 backdrop-blur-sm">
+      <div className="relative z-10 mt-12 border-y border-white/10 bg-background/40 py-4 backdrop-blur-sm sm:mt-8">
         <Marquee items={["Web Design", "Development", "UI / UX", "Branding", "UMKM Indonesia"]} speed={32} />
       </div>
     </section>
