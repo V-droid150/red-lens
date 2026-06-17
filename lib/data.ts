@@ -2,10 +2,10 @@ export const projects = [
   {
     id: "kopi-nusantara",
     title: "Kopi Nusantara",
-    category: "Landing Page",
+    category: "Web Page",
     description:
-      "Website kedai kopi spesialti dengan halaman menu interaktif dan sistem cart.",
-    stack: ["Next.js", "Tailwind CSS", "TypeScript"],
+      "Website multi-halaman untuk kedai kopi spesialti — lengkap dengan menu interaktif, keranjang belanja, dan checkout pembayaran online.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Midtrans"],
     liveUrl: "https://coffeeshop-website-cyan.vercel.app/",
     image: "/projects/kopi-nusantara.jpg",
     color: "#3b1a08",
@@ -127,16 +127,16 @@ export const projectDetails: Record<
 > = {
   "kopi-nusantara": {
     overview:
-      "Landing page untuk kedai kopi spesialti Indonesia. Dirancang untuk menciptakan kesan premium dan mengundang pelanggan baru melalui tampilan yang hangat dan profesional.",
+      "Website multi-halaman untuk kedai kopi spesialti Indonesia. Lebih dari sekadar etalase — situs ini dilengkapi alur belanja online penuh: pelanggan menelusuri menu, menambahkan pesanan ke keranjang, lalu menyelesaikan transaksi lewat checkout pembayaran yang terintegrasi. Dirancang agar tampil premium sekaligus benar-benar fungsional untuk berjualan.",
     work: [
-      "Desain & development halaman utama",
-      "Halaman menu dengan filter kategori",
-      "Sistem cart interaktif",
-      "Halaman layanan dengan layout scroll",
-      "SEO meta tags",
-      "Deploy ke Vercel",
+      "Arsitektur multi-halaman (Beranda, Menu, About, Kontak)",
+      "Katalog menu dengan filter kategori",
+      "Keranjang belanja interaktif",
+      "Checkout & pembayaran online terintegrasi (Midtrans)",
+      "Form kontak & dashboard admin pesanan",
+      "SEO meta tags & deploy ke Vercel",
     ],
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "Midtrans"],
   },
   "santa-maria": {
     overview:

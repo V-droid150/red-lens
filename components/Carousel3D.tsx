@@ -8,7 +8,7 @@ const cards = [
   {
     id: 1,
     title: "Kopi Nusantara",
-    category: "Landing Page",
+    category: "Web Page",
     image: "/projects/kopi-nusantara.jpg",
     color: "#3b1a08",
     accent: "#c2410c",
