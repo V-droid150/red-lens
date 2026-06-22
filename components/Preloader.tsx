@@ -7,22 +7,22 @@ import Logo from "@/components/Logo";
 /**
  * Intro/preloader ala Lusion: counter 00 → 100 di pojok, wordmark di tengah,
  * lalu panel hitam menggeser ke atas untuk membuka halaman. Mengunci scroll
- * selama berjalan. Hanya tampil sekali per sesi tab (sessionStorage).
+ * selama berjalan.
+ *
+ * CATATAN: SENGAJA tidak membaca sessionStorage saat render. Dulu nilai awal
+ * `skip` dibaca dari sessionStorage via lazy initializer — di server selalu
+ * false (tak ada window) tapi di klien saat refresh jadi true → render server
+ * (preloader) ≠ render klien (null) → HYDRATION MISMATCH yang bikin pembukaan
+ * error saat refresh. Sekarang preloader selalu dirender sama di server & klien,
+ * lalu animasi jalan via useEffect (hanya di klien). Karena komponen ini ada di
+ * layout, ia hanya remount saat full page load / refresh — bukan saat navigasi
+ * antar-halaman di dalam app.
  */
 export default function Preloader() {
   const [count, setCount] = useState(0);
   const [done, setDone] = useState(false);
-  // BUG 1 FIX: lazy initializer reads sessionStorage at first render (SSR-safe),
-  // so `skip` is already true on second visit — no flash before useEffect fires.
-  const [skip] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return !!sessionStorage.getItem("rl_intro_seen");
-  });
 
   useEffect(() => {
-    // skip is already handled by early-return below; nothing to do here.
-    if (skip) return;
-    sessionStorage.setItem("rl_intro_seen", "1");
     document.body.style.overflow = "hidden";
 
     const start = performance.now();
@@ -37,19 +37,16 @@ export default function Preloader() {
       else setTimeout(() => setDone(true), 450);
     };
     raf = requestAnimationFrame(tick);
-    // BUG 2 FIX: always restore overflow on cleanup so an early unmount
-    // (hot-reload, fast navigation) never leaves the page scroll-locked.
+    // Selalu pulihkan overflow saat cleanup (mis. unmount di tengah animasi).
     return () => {
       cancelAnimationFrame(raf);
       document.body.style.overflow = "";
     };
-  }, [skip]);
+  }, []);
 
   useEffect(() => {
     if (done) document.body.style.overflow = "";
   }, [done]);
-
-  if (skip) return null;
 
   return (
     <AnimatePresence>
