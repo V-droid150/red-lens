@@ -12,16 +12,16 @@ export const projects = [
     accentColor: "#c2410c",
   },
   {
-    id: "santa-maria",
-    title: "SantaMaria",
-    category: "Web App / Dashboard",
+    id: "jalar",
+    title: "JALAR",
+    category: "Landing Page",
     description:
-      "Dashboard manajemen UMKM lengkap: produk, pesanan, inventaris, keuangan, dan laporan.",
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
-    liveUrl: "https://santa-maria-project.vercel.app/dashboard",
-    image: "/projects/santamaria.jpg",
-    color: "#0a1628",
-    accentColor: "#eab308",
+      "Landing page produk keripik pedas artisanal bertema 'api' yang berani — hero slider sinematik, katalog tiga level kepedasan, keranjang belanja, dan checkout langsung via WhatsApp. Dirancang mobile-first untuk mengubah pengunjung jadi pembeli.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    liveUrl: "https://jalar.vercel.app",
+    image: "/projects/jalar.png",
+    color: "#1a0500",
+    accentColor: "#f97316",
   },
 ];
 
@@ -138,18 +138,17 @@ export const projectDetails: Record<
     ],
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "Midtrans"],
   },
-  "santa-maria": {
+  jalar: {
     overview:
-      "Dashboard manajemen operasional UMKM all-in-one. Dibangun untuk membantu pemilik bisnis kecil memantau produk, pesanan, keuangan, dan pelanggan dalam satu platform.",
+      "Landing page penjualan untuk JALAR, brand keripik pedas artisanal. Tujuannya satu: bikin pengunjung penasaran lalu langsung order. Dari hero slider sinematik bertema api, kartu produk tiga level kepedasan dengan keranjang belanja, sampai checkout instan via WhatsApp — semuanya dirancang mobile-first agar nyaman dibuka dari HP dan mendorong konversi.",
     work: [
-      "Sistem autentikasi (Google OAuth + email)",
-      "Dasbor dengan KPI dan grafik pendapatan",
-      "Manajemen produk & inventaris",
-      "Manajemen pesanan & pelanggan",
-      "Modul keuangan & laporan",
-      "Bilingual (ID/EN)",
-      "Deploy ke Vercel",
+      "Hero slider sinematik 3 produk (autoplay + geser/swipe)",
+      "Brand story dengan ilustrasi maskot",
+      "Katalog produk + keranjang belanja (add-to-cart)",
+      "Checkout instan langsung via WhatsApp",
+      "Micro-interaction: tombol 'api' & marquee testimoni",
+      "Desain mobile-first, SEO meta & deploy ke Vercel",
     ],
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "Vercel"],
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Embla Carousel"],
   },
 };

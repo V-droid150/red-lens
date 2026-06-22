@@ -16,12 +16,12 @@ const cards = [
   },
   {
     id: 2,
-    title: "SantaMaria",
-    category: "Web App",
-    image: "/projects/santamaria.jpg",
-    color: "#0a1628",
-    accent: "#eab308",
-    url: "https://santa-maria-project.vercel.app/dashboard",
+    title: "JALAR",
+    category: "Landing Page",
+    image: "/projects/jalar.png",
+    color: "#1a0500",
+    accent: "#f97316",
+    url: "https://jalar.vercel.app",
   },
   {
     id: 3,
