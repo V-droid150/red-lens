@@ -69,7 +69,8 @@ export default function Footer() {
           </div>
 
           <div className="flex gap-4 md:justify-end">
-            {SOCIALS.map(({ Icon, href, label }) => (
+            {/* Hanya tampilkan sosial dengan akun nyata (placeholder "#" disembunyikan) */}
+            {SOCIALS.filter((s) => s.href !== "#").map(({ Icon, href, label }) => (
               <Magnetic key={label}>
                 <a
                   href={href}

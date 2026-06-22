@@ -94,7 +94,9 @@ export default function Carousel3D({ showDots = true }: { showDots?: boolean }) 
       rafRef.current = requestAnimationFrame(animate);
     };
     rafRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafRef.current!);
+    return () => {
+      if (rafRef.current !== undefined) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   const goToCard = (index: number) => {
@@ -204,18 +206,20 @@ export default function Carousel3D({ showDots = true }: { showDots?: boolean }) 
                 <span className="absolute bottom-3 left-3 font-heading text-base font-bold text-white">
                   {card.title}
                 </span>
-                {/* Link icon */}
-                <a
-                  href={card.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="absolute bottom-3 right-3"
-                  style={{ color: card.accent, opacity: 0.6 }}
-                  aria-label={`Buka ${card.title}`}
-                >
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
+                {/* Link icon — hanya untuk card dengan URL nyata (placeholder "#" disembunyikan) */}
+                {card.url !== "#" && (
+                  <a
+                    href={card.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="absolute bottom-3 right-3"
+                    style={{ color: card.accent, opacity: 0.6 }}
+                    aria-label={`Buka ${card.title}`}
+                  >
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                )}
               </div>
             );
           })}

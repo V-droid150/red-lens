@@ -147,11 +147,19 @@ export default function ContactSection() {
                   <label className="mb-1.5 block text-sm font-medium text-zinc-400">Email</label>
                   <input
                     type="email"
-                    {...register("email", { required: true })}
+                    {...register("email", {
+                      required: "Email wajib diisi.",
+                      pattern: {
+                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                        message: "Format email tidak valid.",
+                      },
+                    })}
                     placeholder="email@anda.com"
                     className={inputClass}
                   />
-                  {errors.email && <p className="mt-1 text-xs text-accent">Email wajib diisi.</p>}
+                  {errors.email && (
+                    <p className="mt-1 text-xs text-accent">{errors.email.message}</p>
+                  )}
                 </div>
 
                 <div>
