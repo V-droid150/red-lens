@@ -6,7 +6,11 @@ export const alt = "Red Lens — We Build Websites That Work";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+// SVG kacamata identik dengan components/Logo.tsx (dipakai sbg logo di OG image).
+const glasses = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 24" fill="none"><circle cx="14" cy="13" r="7.5" fill="rgba(220,38,38,0.22)" stroke="#dc2626" stroke-width="2"/><circle cx="34" cy="13" r="7.5" fill="rgba(220,38,38,0.22)" stroke="#dc2626" stroke-width="2"/><path d="M21.5 11.5q2.5 -2.5 5 0" stroke="#dc2626" stroke-width="2" stroke-linecap="round"/><path d="M6.8 10.2 1.5 6.5" stroke="#dc2626" stroke-width="2" stroke-linecap="round"/><path d="M41.2 10.2 46.5 6.5" stroke="#dc2626" stroke-width="2" stroke-linecap="round"/></svg>`;
+
 export default function OpengraphImage() {
+  const logoSrc = `data:image/svg+xml;base64,${btoa(glasses)}`;
   return new ImageResponse(
     (
       <div
@@ -24,17 +28,10 @@ export default function OpengraphImage() {
           fontFamily: "sans-serif",
         }}
       >
-        {/* Wordmark + logo lensa */}
+        {/* Wordmark + logo kacamata */}
         <div style={{ display: "flex", alignItems: "center", gap: "22px" }}>
-          <div
-            style={{
-              display: "flex",
-              width: "54px",
-              height: "54px",
-              borderRadius: "9999px",
-              border: "7px solid #dc2626",
-            }}
-          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={logoSrc} width={96} height={48} alt="" />
           <div style={{ fontSize: "38px", fontWeight: 800, letterSpacing: "4px" }}>
             RED LENS
           </div>

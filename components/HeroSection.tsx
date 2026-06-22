@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import Carousel3D from "./Carousel3D";
 import Blob from "./Blob";
@@ -11,6 +11,7 @@ import { RevealLines } from "./Reveal";
 import { scrollToSection } from "./SmoothScroll";
 
 export default function HeroSection() {
+  const reduce = useReducedMotion();
   return (
     <section className="relative flex min-h-[100svh] flex-col overflow-hidden">
       {/* Latar: blob organik + carousel 3D (di-adapt jadi background sinematik) */}
@@ -39,7 +40,7 @@ export default function HeroSection() {
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-widest text-zinc-300 backdrop-blur-sm">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75 motion-reduce:animate-none" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
             </span>
             Tersedia untuk proyek freelance
@@ -125,7 +126,10 @@ export default function HeroSection() {
         aria-label="Scroll ke bawah"
         className="relative z-10 mx-auto mb-5 mt-10 hidden items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-zinc-500 transition hover:text-accent sm:mt-14 sm:flex"
       >
-        <motion.span animate={{ y: [0, 5, 0] }} transition={{ duration: 1.6, repeat: Infinity }}>
+        <motion.span
+          animate={reduce ? undefined : { y: [0, 5, 0] }}
+          transition={reduce ? undefined : { duration: 1.6, repeat: Infinity }}
+        >
           <ArrowDown className="h-4 w-4" />
         </motion.span>
         Scroll

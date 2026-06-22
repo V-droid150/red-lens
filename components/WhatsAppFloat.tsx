@@ -34,7 +34,7 @@ export default function WhatsAppFloat() {
       }`}
     >
       <span className="relative flex h-14 w-14 items-center justify-center">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-40" />
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-40 motion-reduce:animate-none" />
         <WhatsappIcon className="relative h-7 w-7" />
       </span>
       <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-medium transition-all duration-300 group-hover:max-w-[160px]">

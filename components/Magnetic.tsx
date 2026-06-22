@@ -18,6 +18,10 @@ export default function Magnetic({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  // mounted: render <span> netral di server & render pertama klien (konsisten,
+  // tanpa hydration mismatch); efek magnetik baru diaktifkan setelah mount di
+  // perangkat non-sentuh.
+  const [mounted, setMounted] = useState(false);
   const [touch, setTouch] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -42,10 +46,11 @@ export default function Magnetic({
   // Di perangkat sentuh efek magnetik dimatikan agar tombol tidak "bergeser
   // nyangkut" setelah di-tap.
   useEffect(() => {
+    setMounted(true);
     setTouch(window.matchMedia("(pointer: coarse)").matches);
   }, []);
 
-  if (touch) {
+  if (!mounted || touch) {
     return <span className={`inline-block ${className}`}>{children}</span>;
   }
 

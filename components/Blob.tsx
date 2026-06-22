@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 /**
  * Bentuk organik (blob) gradient merah yang melayang pelan — versi ringan dari
@@ -20,6 +20,8 @@ export default function Blob({
   size?: number;
   opacity?: number;
 }) {
+  // Hormati prefers-reduced-motion: blob jadi diam (tanpa float) bagi user sensitif gerak.
+  const reduce = useReducedMotion();
   return (
     <motion.div
       aria-hidden
@@ -34,13 +36,17 @@ export default function Blob({
         filter: "blur(28px)",
         willChange: "transform",
       }}
-      animate={{
-        scale: [1, 1.08, 0.96, 1],
-        x: [0, 22, -16, 0],
-        y: [0, -18, 14, 0],
-        rotate: [0, 8, -6, 0],
-      }}
-      transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+      animate={
+        reduce
+          ? undefined
+          : {
+              scale: [1, 1.08, 0.96, 1],
+              x: [0, 22, -16, 0],
+              y: [0, -18, 14, 0],
+              rotate: [0, 8, -6, 0],
+            }
+      }
+      transition={reduce ? undefined : { duration: 16, repeat: Infinity, ease: "easeInOut" }}
     />
   );
 }

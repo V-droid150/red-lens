@@ -1,12 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { skills, stats } from "@/lib/data";
 import Logo from "@/components/Logo";
 import HoloBackground from "@/components/HoloBackground";
 import { Reveal, RevealLines } from "@/components/Reveal";
 
 export default function AboutSection() {
+  const reduce = useReducedMotion();
   return (
     <section id="tentang" className="relative py-24 md:py-36" style={{ background: "#0a0a0a" }}>
       <HoloBackground />
@@ -15,8 +16,8 @@ export default function AboutSection() {
         <div>
           <div className="relative mx-auto h-[220px] w-[220px]">
             <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              animate={reduce ? undefined : { rotate: 360 }}
+              transition={reduce ? undefined : { duration: 10, repeat: Infinity, ease: "linear" }}
               className="absolute inset-0 rounded-full border-2 border-accent/20 border-t-accent"
             />
             <div

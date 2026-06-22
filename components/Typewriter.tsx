@@ -22,7 +22,7 @@ export default function Typewriter({
 
   useEffect(() => {
     let i = 0;
-    let interval: ReturnType<typeof setInterval>;
+    let interval: ReturnType<typeof setInterval> | undefined;
     const start = setTimeout(() => {
       interval = setInterval(() => {
         i += 1;
@@ -47,8 +47,8 @@ export default function Typewriter({
         <span aria-hidden>{text.slice(0, count)}</span>
         <span
           aria-hidden
-          className="ml-0.5 inline-block w-[2px] translate-y-[0.12em] bg-accent"
-          style={{ height: "1em", animation: "blink 1s step-end infinite" }}
+          className="animate-blink ml-0.5 inline-block w-[2px] translate-y-[0.12em] bg-accent"
+          style={{ height: "1em" }}
         />
       </span>
     </span>

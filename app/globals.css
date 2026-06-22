@@ -59,6 +59,9 @@ body {
     opacity: 0;
   }
 }
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
 
 /* Marquee teks berjalan */
 @keyframes marquee {
@@ -86,7 +89,9 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-marquee {
-    animation: none;
+  .animate-marquee,
+  .animate-blink,
+  .animate-ping {
+    animation: none !important;
   }
 }

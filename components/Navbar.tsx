@@ -62,14 +62,16 @@ export default function Navbar() {
         <button
           onClick={() => setOpen((o) => !o)}
           className="text-white md:hidden"
-          aria-label="Buka menu"
+          aria-label={open ? "Tutup menu" : "Buka menu"}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </nav>
 
       {open && (
-        <div className="border-t border-accent/10 bg-surface md:hidden">
+        <div id="mobile-nav" className="border-t border-accent/10 bg-surface md:hidden">
           <div className="flex flex-col px-5 py-3">
             {NAV.map((n) => (
               <button

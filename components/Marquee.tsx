@@ -5,18 +5,10 @@
  * dua salinan identik lalu digeser -50% → loop mulus tanpa lompatan.
  * `reverse` membalik arah. Pause saat hover.
  */
-export default function Marquee({
-  items,
-  reverse = false,
-  speed = 28,
-  className = "",
-}: {
-  items: string[];
-  reverse?: boolean;
-  speed?: number;
-  className?: string;
-}) {
-  const Row = () => (
+// Didefinisikan di luar Marquee agar TIDAK jadi komponen baru tiap render
+// (kalau di dalam, React akan unmount/remount Row setiap parent re-render).
+function Row({ items }: { items: string[] }) {
+  return (
     <div className="flex shrink-0 items-center gap-10 pr-10" aria-hidden>
       {items.map((item, i) => (
         <span key={i} className="flex items-center gap-10">
@@ -28,7 +20,19 @@ export default function Marquee({
       ))}
     </div>
   );
+}
 
+export default function Marquee({
+  items,
+  reverse = false,
+  speed = 28,
+  className = "",
+}: {
+  items: string[];
+  reverse?: boolean;
+  speed?: number;
+  className?: string;
+}) {
   return (
     <div className={`group w-full overflow-hidden ${className}`}>
       <div
@@ -38,8 +42,8 @@ export default function Marquee({
           animationDirection: reverse ? "reverse" : "normal",
         }}
       >
-        <Row />
-        <Row />
+        <Row items={items} />
+        <Row items={items} />
       </div>
     </div>
   );

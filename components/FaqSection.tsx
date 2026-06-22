@@ -50,9 +50,11 @@ export default function FaqSection() {
             return (
               <div key={i}>
                 <button
+                  id={`faq-q-${i}`}
                   onClick={() => setOpen(isOpen ? null : i)}
                   className="flex w-full items-center justify-between gap-4 py-5 text-left"
                   aria-expanded={isOpen}
+                  aria-controls={`faq-a-${i}`}
                 >
                   <span
                     className={`font-heading text-base font-bold transition-colors md:text-lg ${
@@ -72,6 +74,9 @@ export default function FaqSection() {
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
+                      id={`faq-a-${i}`}
+                      role="region"
+                      aria-labelledby={`faq-q-${i}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
