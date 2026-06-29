@@ -18,7 +18,7 @@ const cards = [
     id: 2,
     title: "JALAR",
     category: "Landing Page",
-    image: "/projects/jalar.png",
+    image: "/projects/jalar.jpg",
     color: "#1a0500",
     accent: "#f97316",
     url: "https://jalar.vercel.app",

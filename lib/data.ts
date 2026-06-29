@@ -19,7 +19,7 @@ export const projects = [
       "Landing page produk keripik pedas artisanal bertema 'api' yang berani — hero slider sinematik, katalog tiga level kepedasan, keranjang belanja, dan checkout langsung via WhatsApp. Dirancang mobile-first untuk mengubah pengunjung jadi pembeli.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     liveUrl: "https://jalar.vercel.app",
-    image: "/projects/jalar.png",
+    image: "/projects/jalar.jpg",
     color: "#1a0500",
     accentColor: "#f97316",
   },
