@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 const cards = [
@@ -56,6 +56,7 @@ const TOTAL = cards.length;
 const ANGLE_PER = 360 / TOTAL;
 
 export default function Carousel3D({ showDots = true }: { showDots?: boolean }) {
+  const reduceMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(0);
   const [mobile, setMobile] = useState(false);
   const pausedRef = useRef(false);
@@ -78,8 +79,10 @@ export default function Carousel3D({ showDots = true }: { showDots?: boolean }) 
     return () => mq.removeEventListener("change", update);
   }, []);
 
-  // Auto-rotate (berhenti saat hover) — gerakkan via ref agar TIDAK re-render tiap frame
+  // Auto-rotate (berhenti saat hover) — gerakkan via ref agar TIDAK re-render tiap frame.
+  // Dimatikan total bila pengguna mengaktifkan "reduce motion" di OS.
   useEffect(() => {
+    if (reduceMotion) return;
     const animate = () => {
       if (!pausedRef.current) {
         rotationRef.current -= speedRef.current;
@@ -97,7 +100,7 @@ export default function Carousel3D({ showDots = true }: { showDots?: boolean }) 
     return () => {
       if (rafRef.current !== undefined) cancelAnimationFrame(rafRef.current);
     };
-  }, []);
+  }, [reduceMotion]);
 
   const goToCard = (index: number) => {
     rotationRef.current = -(index * ANGLE_PER);

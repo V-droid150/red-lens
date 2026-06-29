@@ -28,18 +28,20 @@ export default function Preloader() {
     const start = performance.now();
     const duration = 1900;
     let raf = 0;
+    let tid: ReturnType<typeof setTimeout> | undefined;
     const tick = (t: number) => {
       const p = Math.min((t - start) / duration, 1);
       // ease-out biar angka melambat di akhir
       const eased = 1 - Math.pow(1 - p, 2);
       setCount(Math.round(eased * 100));
       if (p < 1) raf = requestAnimationFrame(tick);
-      else setTimeout(() => setDone(true), 450);
+      else tid = setTimeout(() => setDone(true), 450);
     };
     raf = requestAnimationFrame(tick);
     // Selalu pulihkan overflow saat cleanup (mis. unmount di tengah animasi).
     return () => {
       cancelAnimationFrame(raf);
+      if (tid !== undefined) clearTimeout(tid);
       document.body.style.overflow = "";
     };
   }, []);

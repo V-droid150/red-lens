@@ -134,18 +134,30 @@ export default function ContactSection() {
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-zinc-400">Nama lengkap</label>
+                  <label htmlFor="contact-name" className="mb-1.5 block text-sm font-medium text-zinc-400">
+                    Nama lengkap
+                  </label>
                   <input
+                    id="contact-name"
                     {...register("name", { required: true })}
+                    aria-invalid={errors.name ? "true" : "false"}
+                    aria-describedby={errors.name ? "contact-name-err" : undefined}
                     placeholder="Nama Anda"
                     className={inputClass}
                   />
-                  {errors.name && <p className="mt-1 text-xs text-accent">Nama wajib diisi.</p>}
+                  {errors.name && (
+                    <p id="contact-name-err" role="alert" className="mt-1 text-xs text-accent">
+                      Nama wajib diisi.
+                    </p>
+                  )}
                 </div>
 
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-zinc-400">Email</label>
+                  <label htmlFor="contact-email" className="mb-1.5 block text-sm font-medium text-zinc-400">
+                    Email
+                  </label>
                   <input
+                    id="contact-email"
                     type="email"
                     {...register("email", {
                       required: "Email wajib diisi.",
@@ -154,17 +166,23 @@ export default function ContactSection() {
                         message: "Format email tidak valid.",
                       },
                     })}
+                    aria-invalid={errors.email ? "true" : "false"}
+                    aria-describedby={errors.email ? "contact-email-err" : undefined}
                     placeholder="email@anda.com"
                     className={inputClass}
                   />
                   {errors.email && (
-                    <p className="mt-1 text-xs text-accent">{errors.email.message}</p>
+                    <p id="contact-email-err" role="alert" className="mt-1 text-xs text-accent">
+                      {errors.email.message}
+                    </p>
                   )}
                 </div>
 
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-zinc-400">Jenis layanan</label>
-                  <select {...register("service")} className={inputClass}>
+                  <label htmlFor="contact-service" className="mb-1.5 block text-sm font-medium text-zinc-400">
+                    Jenis layanan
+                  </label>
+                  <select id="contact-service" {...register("service")} className={inputClass}>
                     <option>Landing Page</option>
                     <option>Web Page</option>
                     <option>UI/UX Design</option>
@@ -173,16 +191,23 @@ export default function ContactSection() {
                 </div>
 
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-zinc-400">
+                  <label htmlFor="contact-message" className="mb-1.5 block text-sm font-medium text-zinc-400">
                     Pesan / deskripsi proyek
                   </label>
                   <textarea
+                    id="contact-message"
                     rows={4}
                     {...register("message", { required: true })}
+                    aria-invalid={errors.message ? "true" : "false"}
+                    aria-describedby={errors.message ? "contact-message-err" : undefined}
                     placeholder="Ceritakan kebutuhan Anda..."
                     className={`${inputClass} resize-none`}
                   />
-                  {errors.message && <p className="mt-1 text-xs text-accent">Pesan wajib diisi.</p>}
+                  {errors.message && (
+                    <p id="contact-message-err" role="alert" className="mt-1 text-xs text-accent">
+                      Pesan wajib diisi.
+                    </p>
+                  )}
                 </div>
 
                 {error && (

@@ -10,7 +10,8 @@ const WA_HREF = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_TEXT)}`
 /**
  * Tombol WhatsApp mengambang di pojok kanan-bawah. Muncul setelah pengguna
  * menggulir sedikit, dengan label yang melebar saat hover (desktop) dan pulse
- * ring untuk menarik perhatian. Hijau khas WhatsApp agar langsung dikenali.
+ * ring untuk menarik perhatian. Memakai warna brand Red Lens (merah/bg-accent),
+ * bukan hijau WhatsApp — sesuai permintaan agar menyatu dengan tema situs.
  */
 export default function WhatsAppFloat() {
   const [show, setShow] = useState(false);

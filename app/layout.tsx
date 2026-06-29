@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Syne, Inter } from "next/font/google";
 import "lenis/dist/lenis.css";
 import "./globals.css";
+import MotionProvider from "@/components/MotionProvider";
 import SmoothScroll from "@/components/SmoothScroll";
 import CustomCursor from "@/components/CustomCursor";
 import Preloader from "@/components/Preloader";
@@ -66,10 +67,12 @@ export default function RootLayout({
   return (
     <html lang="id" className={`${syne.variable} ${inter.variable}`}>
       <body className="bg-background text-text-primary font-sans antialiased">
-        <Preloader />
-        <CustomCursor />
-        <WhatsAppFloat />
-        <SmoothScroll>{children}</SmoothScroll>
+        <MotionProvider>
+          <Preloader />
+          <CustomCursor />
+          <WhatsAppFloat />
+          <SmoothScroll>{children}</SmoothScroll>
+        </MotionProvider>
       </body>
     </html>
   );

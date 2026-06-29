@@ -5,7 +5,7 @@ import Logo from "@/components/Logo";
 import HoloBackground from "@/components/HoloBackground";
 import Marquee from "@/components/Marquee";
 import Magnetic from "@/components/Magnetic";
-import { scrollToSection } from "@/components/SmoothScroll";
+import { scrollToSection, scrollToTop } from "@/components/SmoothScroll";
 
 const NAV = [
   { label: "Layanan", id: "layanan" },
@@ -44,9 +44,9 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-3">
           <div>
             <button
-              onClick={() => scrollToSection("contact")}
+              onClick={scrollToTop}
               className="flex items-center gap-2"
-              aria-label="Red Lens"
+              aria-label="Red Lens — kembali ke atas"
             >
               <Logo className="h-7 w-14" />
               <span className="font-heading text-xl font-bold text-white">Red Lens</span>

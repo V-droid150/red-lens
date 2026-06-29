@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { faqs } from "@/lib/data";
 import HoloBackground from "@/components/HoloBackground";
@@ -71,22 +71,19 @@ export default function FaqSection() {
                     <Plus className="h-5 w-5" />
                   </span>
                 </button>
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      id={`faq-a-${i}`}
-                      role="region"
-                      aria-labelledby={`faq-q-${i}`}
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <p className="pb-5 pr-8 text-sm leading-relaxed text-zinc-400">{item.a}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Panel SELALU dirender (height dianimasikan) agar id target
+                    aria-controls selalu ada di DOM — pola accordion yang benar. */}
+                <motion.div
+                  id={`faq-a-${i}`}
+                  role="region"
+                  aria-labelledby={`faq-q-${i}`}
+                  initial={false}
+                  animate={isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <p className="pb-5 pr-8 text-sm leading-relaxed text-zinc-400">{item.a}</p>
+                </motion.div>
               </div>
             );
           })}
