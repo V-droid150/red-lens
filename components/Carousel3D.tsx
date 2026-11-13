@@ -30,7 +30,7 @@ const cards = [
     image: "/projects/ordersync-beauty.jpg",
     color: "#2a0a14",
     accent: "#c9184a",
-    url: "/projects/ordersync-beauty",
+    url: "https://web-inky-five-78.vercel.app/dashboard",
   },
   {
     id: 4,

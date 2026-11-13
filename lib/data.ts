@@ -30,9 +30,8 @@ export const projects = [
     description:
       "Sistem otomasi order multi-channel untuk toko skincare: order dari website, Shopee, TikTok Shop, dan file export otomatis dirapikan lalu tercatat di Google Sheets. Stok berkurang sendiri, notifikasi restock ke Telegram, dan dashboard pemilik toko.",
     stack: ["n8n", "Google Sheets API", "Next.js", "Python"],
-    // Toko demo belum online (n8n masih lokal) -> sementara arahkan ke repo
-    liveUrl: "https://github.com/kiekevin27-ux/ordersync-beauty",
-    demoLabel: "Lihat di GitHub",
+    // Toko demo + dashboard live di Vercel (n8n masih lokal: checkout tampil dalam mode demo)
+    liveUrl: "https://web-inky-five-78.vercel.app/dashboard",
     image: "/projects/ordersync-beauty.jpg",
     color: "#2a0a14",
     accentColor: "#c9184a",
