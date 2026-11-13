@@ -23,6 +23,20 @@ export const projects = [
     color: "#1a0500",
     accentColor: "#f97316",
   },
+  {
+    id: "ordersync-beauty",
+    title: "OrderSync Beauty",
+    category: "Automation",
+    description:
+      "Sistem otomasi order multi-channel untuk toko skincare: order dari website, Shopee, TikTok Shop, dan file export otomatis dirapikan lalu tercatat di Google Sheets. Stok berkurang sendiri, notifikasi restock ke Telegram, dan dashboard pemilik toko.",
+    stack: ["n8n", "Google Sheets API", "Next.js", "Python"],
+    // Toko demo belum online (n8n masih lokal) -> sementara arahkan ke repo
+    liveUrl: "https://github.com/kiekevin27-ux/ordersync-beauty",
+    demoLabel: "Lihat di GitHub",
+    image: "/projects/ordersync-beauty.jpg",
+    color: "#2a0a14",
+    accentColor: "#c9184a",
+  },
 ];
 
 export const services = [
@@ -150,5 +164,18 @@ export const projectDetails: Record<
       "Desain mobile-first, SEO meta & deploy ke Vercel",
     ],
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Embla Carousel"],
+  },
+  "ordersync-beauty": {
+    overview:
+      "Studi kasus otomasi untuk seller online yang berjualan di banyak tempat sekaligus. Masalahnya klasik: order Shopee, TikTok Shop, dan WhatsApp tercecer di file dengan format berbeda, ada data dobel, SKU salah ketik, nomor HP berantakan, dan stok baru ketahuan habis saat ada pesanan. Solusinya satu \"gerbang order\" di n8n: semua order dari mana pun diperiksa, dirapikan, lalu dicatat ke satu Google Sheet tanpa dobel. Dari situ stok dihitung otomatis, pemilik mendapat notifikasi Telegram saat produk menipis, dan semua angka penting bisa dipantau dari dashboard di HP. Toko Glowra Beauty yang dipakai adalah toko fiktif untuk demo.",
+    work: [
+      "Gerbang order n8n: validasi, normalisasi no HP & nama, anti dobel (upsert), tahan nomor pesanan TikTok 18 digit",
+      "Integrasi pola API Shopee & TikTok Shop: notifikasi → ambil detail order → terjemahkan (diuji lewat simulator)",
+      "Import file export marketplace dari Google Drive: ratusan order dibersihkan & dicatat sekali jalan",
+      "Stok otomatis + notifikasi restock Telegram tanpa spam",
+      "Toko demo & dashboard pemilik toko (omzet, channel, produk terlaris, stok)",
+      "Workbook Google Sheets berisi rumus laba per channel, 0 error, plus dokumentasi & ADR lengkap",
+    ],
+    stack: ["n8n", "Google Sheets & Drive API", "Telegram Bot", "Next.js", "TypeScript", "Python"],
   },
 };

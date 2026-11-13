@@ -25,12 +25,12 @@ const cards = [
   },
   {
     id: 3,
-    title: "Project Ketiga",
-    category: "UI/UX Design",
-    image: "",
-    color: "#1a0a2e",
-    accent: "#a855f7",
-    url: "#",
+    title: "OrderSync Beauty",
+    category: "Automation",
+    image: "/projects/ordersync-beauty.jpg",
+    color: "#2a0a14",
+    accent: "#c9184a",
+    url: "/projects/ordersync-beauty",
   },
   {
     id: 4,

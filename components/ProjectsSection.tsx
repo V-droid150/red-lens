@@ -102,7 +102,7 @@ export default function ProjectsSection() {
                   rel="noopener noreferrer"
                   className="link-underline inline-flex items-center gap-1 text-sm font-medium text-accent"
                 >
-                  Lihat Demo <ArrowUpRight className="h-4 w-4" />
+                  {p.demoLabel ?? "Lihat Demo"} <ArrowUpRight className="h-4 w-4" />
                 </a>
                 <Link
                   href={`/projects/${p.id}`}
