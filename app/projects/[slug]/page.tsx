@@ -53,7 +53,7 @@ export default function CaseStudyPage({ params }: Params) {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 rounded-full bg-accent px-6 py-2.5 text-sm font-medium text-white transition hover:brightness-110"
           >
-            {project.demoLabel ?? "Lihat Demo Live"}
+            Lihat Demo Live
             <ArrowUpRight className="h-4 w-4" />
           </a>
           <div className="flex flex-wrap gap-2">
@@ -141,7 +141,7 @@ export default function CaseStudyPage({ params }: Params) {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 rounded-full border border-accent px-6 py-2.5 text-sm font-medium text-accent transition hover:bg-accent hover:text-white"
           >
-            {project.demoLabel ?? "Lihat Demo Live"}
+            Lihat Demo Live
             <ArrowUpRight className="h-4 w-4" />
           </a>
         </div>
