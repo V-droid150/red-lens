@@ -182,9 +182,9 @@ export const projectDetails: Record<
     ],
     stack: ["Next.js", "TypeScript", "Google Sheets & Drive API", "Telegram Bot", "Vercel Cron", "n8n", "Python"],
     video: {
-      src: "/projects/ordersync-alur.mp4",
-      poster: "/projects/ordersync-alur-poster.jpg",
-      caption: "Alur lengkap dalam 75 detik: checkout di website → tercatat di Google Sheets → kabar ke Telegram → order Shopee → dashboard → CS otomatis.",
+      src: "/projects/ordersync-otomasi.mp4",
+      poster: "/projects/ordersync-otomasi-poster.jpg",
+      caption: "Setiap penjualan dari website, Shopee & TikTok Shop otomatis tercatat di Google Sheets, lalu pemilik toko dikabari dan bisa minta laporan lewat bot Telegram.",
     },
   },
 };
