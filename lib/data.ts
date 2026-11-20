@@ -28,10 +28,10 @@ export const projects = [
     title: "OrderSync Beauty",
     category: "Automation",
     description:
-      "Sistem otomasi order multi-channel untuk toko skincare: order dari website, Shopee, TikTok Shop, dan file export otomatis dirapikan lalu tercatat di Google Sheets. Stok berkurang sendiri, notifikasi restock ke Telegram, dan dashboard pemilik toko.",
-    stack: ["n8n", "Google Sheets API", "Next.js", "Python"],
-    // Toko demo + dashboard live di Vercel (n8n masih lokal: checkout tampil dalam mode demo)
-    liveUrl: "https://web-inky-five-78.vercel.app/dashboard",
+      "Sistem otomasi order multi-channel untuk toko skincare: order dari website, Shopee, TikTok Shop, dan file export otomatis dirapikan lalu tercatat di Google Sheets. Stok terpantau sendiri, bot Telegram untuk pemilik toko, follow-up pelanggan, CS otomatis, dan dashboard.",
+    stack: ["Next.js", "Google Sheets API", "Telegram Bot", "n8n"],
+    // Toko demo + dashboard + bot berjalan penuh di Vercel
+    liveUrl: "https://web-inky-five-78.vercel.app",
     image: "/projects/ordersync-beauty.jpg",
     color: "#2a0a14",
     accentColor: "#c9184a",
@@ -136,6 +136,8 @@ export const projectDetails: Record<
     overview: string;
     work: string[];
     stack: string[];
+    /** Video alur singkat (opsional), diputar di halaman case study. */
+    video?: { src: string; poster: string; caption: string };
   }
 > = {
   "kopi-nusantara": {
@@ -166,15 +168,23 @@ export const projectDetails: Record<
   },
   "ordersync-beauty": {
     overview:
-      "Studi kasus otomasi untuk seller online yang berjualan di banyak tempat sekaligus. Masalahnya klasik: order Shopee, TikTok Shop, dan WhatsApp tercecer di file dengan format berbeda, ada data dobel, SKU salah ketik, nomor HP berantakan, dan stok baru ketahuan habis saat ada pesanan. Solusinya satu \"gerbang order\" di n8n: semua order dari mana pun diperiksa, dirapikan, lalu dicatat ke satu Google Sheet tanpa dobel. Dari situ stok dihitung otomatis, pemilik mendapat notifikasi Telegram saat produk menipis, dan semua angka penting bisa dipantau dari dashboard di HP. Toko Glowra Beauty yang dipakai adalah toko fiktif untuk demo.",
+      "Studi kasus otomasi untuk seller online yang berjualan di banyak tempat sekaligus. Masalahnya klasik: order Shopee, TikTok Shop, dan WhatsApp tercecer di file dengan format berbeda, ada data dobel, SKU salah ketik, nomor HP berantakan, dan stok baru ketahuan habis saat ada pesanan. Solusinya satu \"gerbang order\" (dibangun di n8n, kini juga berjalan langsung di Vercel): semua order dari mana pun diperiksa, dirapikan, lalu dicatat ke satu Google Sheet tanpa dobel. Dari situ stok dihitung otomatis, pemilik mendapat kabar lewat bot Telegram, pelanggan di-follow-up otomatis, pertanyaan pelanggan dijawab CS otomatis, dan semua angka penting bisa dipantau dari dashboard di HP. Toko Glowra Beauty yang dipakai adalah toko fiktif untuk demo.",
     work: [
       "Gerbang order n8n: validasi, normalisasi no HP & nama, anti dobel (upsert), tahan nomor pesanan TikTok 18 digit",
       "Integrasi pola API Shopee & TikTok Shop: notifikasi → ambil detail order → terjemahkan (diuji lewat simulator)",
       "Import file export marketplace dari Google Drive: ratusan order dibersihkan & dicatat sekali jalan",
       "Stok otomatis + notifikasi restock Telegram tanpa spam",
+      "Bot Telegram interaktif untuk pemilik toko: /ringkasan, /stok, /order, kabar status pengiriman & resi",
+      "Follow-up pelanggan otomatis: minta ulasan H+3 & pengingat beli ulang sesuai siklus pakai produk",
+      "CS otomatis 24 jam di website: jawab FAQ, rekomendasi produk, cek pesanan, teruskan ke admin",
       "Toko demo & dashboard pemilik toko (omzet, channel, produk terlaris, stok)",
       "Workbook Google Sheets berisi rumus laba per channel, 0 error, plus dokumentasi & ADR lengkap",
     ],
-    stack: ["n8n", "Google Sheets & Drive API", "Telegram Bot", "Next.js", "TypeScript", "Python"],
+    stack: ["Next.js", "TypeScript", "Google Sheets & Drive API", "Telegram Bot", "Vercel Cron", "n8n", "Python"],
+    video: {
+      src: "/projects/ordersync-alur.mp4",
+      poster: "/projects/ordersync-alur-poster.jpg",
+      caption: "Alur lengkap dalam 75 detik: checkout di website → tercatat di Google Sheets → kabar ke Telegram → order Shopee → dashboard → CS otomatis.",
+    },
   },
 };

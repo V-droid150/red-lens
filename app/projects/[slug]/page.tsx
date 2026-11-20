@@ -94,6 +94,23 @@ export default function CaseStudyPage({ params }: Params) {
           )}
         </div>
 
+        {/* Video alur (opsional) */}
+        {detail.video && (
+          <section className="mt-16">
+            <h2 className="font-heading text-2xl font-bold text-white">Lihat Alurnya</h2>
+            <video
+              className="mt-5 w-full rounded-2xl border border-white/5 bg-black"
+              src={detail.video.src}
+              poster={detail.video.poster}
+              controls
+              playsInline
+              preload="none"
+              aria-label={`Video alur ${project.title}`}
+            />
+            <p className="mt-3 text-sm text-zinc-500">{detail.video.caption}</p>
+          </section>
+        )}
+
         {/* Gambaran Proyek */}
         <section className="mt-16">
           <h2 className="font-heading text-2xl font-bold text-white">Gambaran Proyek</h2>
